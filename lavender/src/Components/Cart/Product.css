@@ -1,0 +1,125 @@
+
+.bQOXDC {
+  list-style: none;
+  margin: 32px 0px 0px;
+  padding: 0px 16px 3px;
+  background: rgb(255, 255, 255);
+}
+.glclPp {
+  margin-bottom: 32px;
+}
+.dioUnE .row {
+  display: flex;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: center;
+  align-items: center;
+  margin: 0px -15px;
+}
+
+.glclPp .intended__images {
+  display: flex;
+}
+.glclPp .intended__checkbox {
+  position: relative;
+  top: 35px;
+}
+.glclPp .intended__img {
+  width: 80px;
+  height: 80px;
+  display: inline-block;
+}
+img {
+  max-width: 100%;
+}
+img {
+  border-style: none;
+}
+.glclPp .intended__content {
+  width: calc(100% - 100px);
+  padding-left: 10px;
+  position: relative;
+}
+.glclPp .intended__name {
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-size: 13px;
+  color: rgb(36, 36, 36);
+  margin-bottom: 5px;
+  line-height: 20px;
+}
+.glclPp .intended__icon--now,
+.glclPp .intended__icon--pro,
+.glclPp .intended__icon--fast {
+  width: 56px;
+}
+.glclPp .intended__icon {
+  display: inline-block;
+  margin-right: 5px;
+  width: 64px;
+}
+.glclPp .intended__real-prices {
+  font-weight: 500;
+  color: rgb(36, 36, 36);
+  font-size: 13px;
+  display: inline-block;
+  margin-right: 5px;
+}
+.cGnbJp {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 3px;
+  width: 84px;
+}
+.cGnbJp .qty-decrease,
+.cGnbJp .qty-increase {
+  display: inline-block;
+  border-right: 1px solid rgb(200, 200, 200);
+  color: rgb(153, 153, 153);
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+}
+cGnbJp .qty-decrease img,
+.cGnbJp .qty-increase img {
+  width: 100%;
+  display: block;
+}
+.cGnbJp .qty-input {
+  border: none;
+  background: transparent;
+  width: 32px;
+  text-align: center;
+  font-size: 13px;
+  appearance: none;
+  margin: 0px;
+  outline: none;
+}
+.cGnbJp .qty-increase {
+  border-right: none;
+  border-left: 1px solid rgb(200, 200, 200);
+}
+.cGnbJp .qty-decrease img,
+.cGnbJp .qty-increase img {
+  width: 100%;
+  display: block;
+}
+.glclPp .intended__final-prices {
+  color: rgb(255, 66, 78);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 20px;
+  display: block;
+}
+.glclPp .intended__delete {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+}
+.glclPp .intended__delete img {
+  width: 17px;
+}
