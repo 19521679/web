@@ -4,6 +4,7 @@ import Mobile from "../../Components/Mobile";
 import Computer from "../../Components/Computer";
 import ExDevice from "../../Components/ExDevice";
 import Service from "../../Components/Service";
+import Article from "../../Components/Article";
 import Cart from "../../Components/Cart";
 import Login from "../../Components/Accounts/Login.js";
 import Register from "../../Components/Accounts/Register.js";
@@ -52,6 +53,11 @@ const routes = [
     path: "/service",
     exact: false,
     main: () => <Service></Service>,
+  },
+  {
+    path: "/article",
+    exact: false,
+    main: () => <Article></Article>,
   },
   {
     path: "/cart",
