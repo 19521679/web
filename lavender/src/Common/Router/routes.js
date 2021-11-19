@@ -3,12 +3,13 @@ import NotFoundPage from "./NotFoundPage.js";
 import Mobile from "../../Components/Mobile";
 import Computer from "../../Components/Computer";
 import ExDevice from "../../Components/ExDevice";
-import Service from "../../Components/Service";
+import Blog from "../../Components/Blog";
 import Cart from "../../Components/Cart";
 import Login from "../../Components/Accounts/Login.js";
 import Register from "../../Components/Accounts/Register.js";
 import Product from "../../Components/Product";
 import Admin from "../../Components/Admin";
+import Guarantee from "../../Components/Guarantee";
 import ProductDashboard from "../../Components/Admin/ProductDashboard";
 import CustomerDashboard from "../../Components/Admin/CustomerDashboard";
 import BillingDashboard from "../../Components/Admin/BillingDashboard";
@@ -49,14 +50,19 @@ const routes = [
     main: () => <ExDevice></ExDevice>,
   },
   {
-    path: "/service",
+    path: "/blog",
     exact: false,
-    main: () => <Service></Service>,
+    main: () => <Blog></Blog>,
   },
   {
     path: "/cart",
     exact: false,
     main: () => <Cart></Cart>,
+  },
+  {
+    path: "/guarantee",
+    exact: false,
+    main: () => <Guarantee></Guarantee>
   },
   {
     path: "/login",

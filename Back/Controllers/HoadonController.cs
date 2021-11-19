@@ -111,7 +111,7 @@ namespace Back.Controllers
 
 
         [Route("/them-sua-hoa-don")]
-        [HttpPut]
+        [HttpPost]
         public async Task<IActionResult> AddOrUpdateHoadon(JsonElement json)
         {
             var sohoadon = int.Parse(json.GetString("sohoadon"));
@@ -173,20 +173,23 @@ namespace Back.Controllers
 
         }
 
-        [Route("xoa-hoadon")]
+        [Route("/xoa-hoadon")]
         [HttpDelete]
-        public async Task<IActionResult> DeleteBill(JsonElement json)
+        public async Task<IActionResult> DeleteBill(int sohoadon)
         {
             var chitiethoadons = await (from c in lavenderContext.Chitiethoadon
-                                  where c.Sohoadon == int.Parse(json.GetString("sohoadon"))
+                                  where c.Sohoadon == sohoadon
                                   select c).ToListAsync();
-            lavenderContext.RemoveRange(chitiethoadons.ToArray());
+            foreach(var i in chitiethoadons)
+            {
+                lavenderContext.Remove(i);
+            }
             await lavenderContext.SaveChangesAsync();
 
-            var hoadon = await lavenderContext.Hoadon.SingleOrDefaultAsync(x => x.Sohoadon == int.Parse(json.GetString("sohoadon")));
-            if (hoadon!=null)
+            Hoadon hoadon = await lavenderContext.Hoadon.SingleOrDefaultAsync(x => x.Sohoadon == sohoadon);
+            if (hoadon != null)
             {
-                lavenderContext.Hoadon.Remove(hoadon);
+                lavenderContext.Remove(hoadon);
                 await lavenderContext.SaveChangesAsync();
             }
             return StatusCode(200);

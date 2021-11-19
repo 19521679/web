@@ -8099,11 +8099,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/khanhle/Documents/GitHub/framework_IS220.M11_6/Back/Back.csproj",
+      "projectUniqueName": "/Users/khanhle/Documents/GitHub/web/Back/Back.csproj",
       "projectName": "Back",
-      "projectPath": "/Users/khanhle/Documents/GitHub/framework_IS220.M11_6/Back/Back.csproj",
+      "projectPath": "/Users/khanhle/Documents/GitHub/web/Back/Back.csproj",
       "packagesPath": "/Users/khanhle/.nuget/packages/",
-      "outputPath": "/Users/khanhle/Documents/GitHub/framework_IS220.M11_6/Back/obj/",
+      "outputPath": "/Users/khanhle/Documents/GitHub/web/Back/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/khanhle/.config/NuGet/NuGet.Config"

@@ -63,8 +63,14 @@ const menus = [
     list: [],
   },
   {
-    name: "Dịch vụ",
-    to: "/service",
+    name: "Bài viết",
+    to: "/blog",
+    exact: false,
+    list: [],
+  },
+  {
+    name: "Bảo hành",
+    to: "/guarantee",
     exact: false,
     list: [],
   },
@@ -256,7 +262,6 @@ class Header extends Component {
                 </li>
               )}
             </ul>
-            <i className="bi bi-list mobile-nav-toggle" />
           </div>
           {/* .navbar */}
         </div>

@@ -32,10 +32,8 @@
       <File FileName="Models/Chitietvanchuyen.cs" Line="19" Column="26" />
       <File FileName="Models/Chitietsanpham.cs" Line="33" Column="1" />
       <File FileName="Models/Chitiethoadon.cs" Line="12" Column="41" />
-      <File FileName="Models/Chitietgiohang.cs" Line="19" Column="26" />
-      <File FileName="Controllers/HoadonController.cs" Line="167" Column="40" />
+      <File FileName="Controllers/HoadonController.cs" Line="115" Column="77" />
       <File FileName="Controllers/PhieunhapController.cs" Line="1" Column="1" />
-      <File FileName="Controllers/HoadonController (copy).cs" Line="31" Column="17" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

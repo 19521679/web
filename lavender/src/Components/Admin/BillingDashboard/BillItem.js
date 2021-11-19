@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import * as productApi from "../../apis/product";
 import * as customerApi from "../../apis/customer";
 import AddBill from "./AddBill";
+import DeleteBill from "./DeleteBill";
 
 export default class BillItem extends Component {
   state = { product: undefined, customer: undefined, modal: 0 };
@@ -43,6 +44,16 @@ export default class BillItem extends Component {
                 bill={this.props.bill}
               ></AddBill>
             );
+            else
+              if (this.state.modal === 2)
+            return (
+              <DeleteBill
+                handleClose={this.hideModal.bind(this)}
+                handleSave={this.hideModal.bind(this)}
+                bill={this.props.bill}
+              ></DeleteBill>
+            );
+          
         }).bind(this)()}
         <li className="list-group-item border-0 d-flex p-4 bg-gray-100 border-radius-lg">
           <div className="d-flex flex-column">
@@ -101,7 +112,7 @@ export default class BillItem extends Component {
           <div className="ms-auto text-end">
             <a
               className="btn btn-link text-danger text-gradient px-3 mb-0"
-              
+              onClick={() => this.showModal(2)}
             >
               <i class="bi bi-trash"></i>
               {"  "}Xoá

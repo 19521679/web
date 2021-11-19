@@ -20,6 +20,10 @@ export const addOrUpdateBilling=(data)=>{
     const url="/them-sua-hoa-don";
     return axiosServices.post(API_ENDPOINT+url,data);
 }
+export const deleteBill=(sohoadon)=>{
+    const url="/xoa-hoadon?sohoadon=";
+    return axiosServices.delete(API_ENDPOINT+url+sohoadon);
+}
 export const detailByBillId=(sohoadon)=>{
     const url="/chitietthoadon-theo-sohoadon";
     return axiosServices.post(API_ENDPOINT+url);
