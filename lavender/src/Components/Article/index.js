@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import "./style.css";
+import "./style.css";
 // import Product from "./Product.js";
 // import { withRouter } from "react-router-dom";
 // import { bindActionCreators } from "redux";
@@ -54,20 +54,6 @@ class index extends Component {
                                         <hr className="invis" />
                                         </div>{/* end blog-list */}
                                     </div>{/* end page-wrapper */}
-                                    <div className="row">
-                                        <div className="col-md-12">
-                                            <nav aria-label="Page navigation">
-                                                <ul className="pagination justify-content-start">
-                                                    <li className="page-item"><a className="page-link" href="#">1</a></li>
-                                                    <li className="page-item"><a className="page-link" href="#">2</a></li>
-                                                    <li className="page-item"><a className="page-link" href="#">3</a></li>
-                                                    <li className="page-item">
-                                                        <a className="page-link" href="#">Next</a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </div>{/* end col */}
-                                    </div>{/* end row */}
                                 </div>{/* end col */}
                                 <div className="col-lg-3 col-md-12 col-sm-12 col-xs-12">
                                     <div className="sidebar">
@@ -91,7 +77,7 @@ class index extends Component {
                                                         </a>
                                                     </div>{/* end media */}
                                                     <div className="blog-meta">
-                                                        <h4><a href="tech-single.html" title>We prepared the best 10 laptop presentations for you</a></h4>
+                                                        <h6><a href="tech-single.html" title>We prepared the best 10 laptop presentations for you</a></h6>
                                                     </div>{/* end meta */}
                                                 </div>{/* end blog-box */}
                                                 <hr className="invis" />
@@ -197,13 +183,6 @@ class index extends Component {
                                                     </a>
                                                 </div>
                                             </div>{/* end blog-list */}
-                                        </div>{/* end widget */}
-                                        <div className="widget">
-                                            <div className="banner-spot clearfix">
-                                                <div className="banner-img">
-                                                    <img src="upload/banner_03.jpg" alt="" className="img-fluid" />
-                                                </div>{/* end banner-img */}
-                                            </div>{/* end banner */}
                                         </div>{/* end widget */}
                                     </div>{/* end sidebar */}
                                 </div>{/* end col */}
