@@ -1,0 +1,34 @@
+.iOhDoD .heading {
+    font-size: 19px;
+    line-height: 21px;
+    font-weight: 300;
+    margin: 20px 0px 15px;
+}
+
+.iOhDoD .inner {
+    background-color: rgb(255, 255, 255);
+    border-radius: 4px;
+    padding: 1px;
+    min-height: 400px;
+}
+
+.iOhDoD th,
+.iOhDoD td {
+    min-width: 130px;
+    padding: 20px 15px;
+    color: rgb(120, 120, 120);
+    font-size: 15px;
+    font-weight: 400;
+    text-align: left;
+}
+
+.iOhDoD td {
+    font-size: 13px;
+    line-height: 20px;
+    color: rgb(51, 51, 51);
+}
+
+a {
+    color: rgb(11, 116, 229);
+    text-decoration: none;
+}

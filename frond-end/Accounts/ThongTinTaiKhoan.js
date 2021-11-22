@@ -1,12 +1,10 @@
 import React, { Component } from "react";
-
+import "./ThongTinTaiKhoan.css";
 export default class ThongTinTaiKhoan extends Component {
   render() {
     return (
       <div className="Account__StyledAccountLayoutInner-sc-1d5h8iz-1 jXurFV">
-        <div className="styles__StyledHeading-sc-s5c7xj-0 geNdhL">
-          Thông tin tài khoản
-        </div>
+        <div className="styles__StyledHeading-sc-s5c7xj-0 geNdhL">Thông tin tài khoản</div>
         <div className="styles__StyleInfoPage-sc-s5c7xj-1 dfHeIP">
           <div className="info">
             <div className="info-left">
@@ -16,31 +14,13 @@ export default class ThongTinTaiKhoan extends Component {
                   <div className="form-control">
                     <label className="input-label">Họ &amp; Tên</label>
                     <div>
-                      <div className="styles__StyledInput-sc-s5c7xj-5 hisWEc">
-                        <input
-                          className="input "
-                          type="search"
-                          name="fullName"
-                          maxLength={128}
-                          placeholder="Thêm họ tên"
-                          defaultValue="Khánh Duy Lê"
-                        />
-                      </div>
+                      <div className="styles__StyledInput-sc-s5c7xj-5 hisWEc"><input className="input" type="search" name="fullName" maxLength={128} placeholder="Thêm họ tên" defaultValue="Nguyễn Lê Nguyên Khang" /></div>
                     </div>
                   </div>
                   <div className="form-control">
                     <label className="input-label">Nickname</label>
                     <div>
-                      <div className="styles__StyledInput-sc-s5c7xj-5 hisWEc">
-                        <input
-                          className="input "
-                          name="userName"
-                          maxLength={128}
-                          placeholder="Thêm nickname"
-                          type="search"
-                          defaultValue
-                        />
-                      </div>
+                      <div className="styles__StyledInput-sc-s5c7xj-5 hisWEc"><input className="input" name="userName" maxLength={128} placeholder="Thêm nickname" type="search" defaultValue /></div>
                     </div>
                   </div>
                   <div className="form-control">
@@ -78,7 +58,6 @@ export default class ThongTinTaiKhoan extends Component {
                         <option value={28}>28</option>
                         <option value={29}>29</option>
                         <option value={30}>30</option>
-                        <option value={31}>31</option>
                       </select>
                       <select name="month">
                         <option value={0}>Tháng</option>
@@ -224,36 +203,11 @@ export default class ThongTinTaiKhoan extends Component {
                   </div>
                   <div className="form-control">
                     <label className="input-label">Giới tính</label>
-                    <label className="Radio__StyledRadio-sc-1tpsfw1-0 eQckrx">
-                      <input
-                        type="radio"
-                        name="gender"
-                        defaultValue="male"
-                        defaultChecked
-                      />
-                      <span className="radio-fake" />
-                      <span className="label">Nam</span>
-                    </label>
-                    <label className="Radio__StyledRadio-sc-1tpsfw1-0 eQckrx">
-                      <input type="radio" name="gender" defaultValue="female" />
-                      <span className="radio-fake" />
-                      <span className="label">Nữ</span>
-                    </label>
-                    <label className="Radio__StyledRadio-sc-1tpsfw1-0 eQckrx">
-                      <input type="radio" name="gender" defaultValue="other" />
-                      <span className="radio-fake" />
-                      <span className="label">Khác</span>
-                    </label>
+                    <label className="Radio__StyledRadio-sc-1tpsfw1-0 eQckrx"><input type="radio" name="gender" defaultValue="male" defaultChecked /><span className="radio-fake" /><span className="label">Nam</span></label>
+                    <label className="Radio__StyledRadio-sc-1tpsfw1-0 eQckrx"><input type="radio" name="gender" defaultValue="female" /><span className="radio-fake" /><span className="label">Nữ</span></label>
+                    <label className="Radio__StyledRadio-sc-1tpsfw1-0 eQckrx"><input type="radio" name="gender" defaultValue="other" /><span className="radio-fake" /><span className="label">Khác</span></label>
                   </div>
-                  <div className="form-control">
-                    <label className="input-label">&nbsp;</label>
-                    <button
-                      type="submit"
-                      className="styles__StyledBtnSubmit-sc-s5c7xj-3 cqEaiM btn-submit"
-                    >
-                      Lưu thay đổi
-                    </button>
-                  </div>
+                  <div className="form-control"><label className="input-label">&nbsp;</label><button type="submit" className="styles__StyledBtnSubmit-sc-s5c7xj-3 cqEaiM btn-submit">Lưu thay đổi</button></div>
                 </form>
               </div>
             </div>
@@ -263,96 +217,39 @@ export default class ThongTinTaiKhoan extends Component {
               <div className="styles__StyledListItem-sc-s5c7xj-4 lCUBE">
                 <div className="list-item">
                   <div className="info">
-                    <img
-                      src="https://frontend.tikicdn.com/_desktop-next/static/img/account/phone.png"
-                      className="icon"
-                      alt=""
-                    />
-                    <div className="detail">
-                      <span>Số điện thoại</span>
-                      <span>0914630145</span>
-                    </div>
+                    <img src="https://frontend.tikicdn.com/_desktop-next/static/img/account/phone.png" className="icon" alt="" />
+                    <div className="detail"><span>Số điện thoại</span><span>0327403627</span></div>
                   </div>
-                  <div className="status">
-                    <span />
-                    <button className="button active">Cập nhật</button>
-                  </div>
+                  <div className="status"><span /><button className="button active">Cập nhật</button></div>
                 </div>
                 <div className="list-item">
                   <div className="info">
-                    <img
-                      src="https://frontend.tikicdn.com/_desktop-next/static/img/account/email.png"
-                      className="icon"
-                      alt=""
-                    />
-                    <div className="detail">
-                      <span>Địa chỉ email</span>
-                      <span className="span hint">Thêm địa chỉ email</span>
-                    </div>
+                    <img src="https://frontend.tikicdn.com/_desktop-next/static/img/account/email.png" className="icon" alt="" />
+                    <div className="detail"><span>Địa chỉ email</span><span>nguyenkhang15032001@gmail.com</span></div>
                   </div>
-                  <div className="status">
-                    <span />
-                    <button className="button active">Cập nhật</button>
-                  </div>
+                  <div className="status"><span /><button className="button active">Cập nhật</button></div>
                 </div>
               </div>
               <span className="info-title">Bảo mật</span>
               <div className="styles__StyledListItem-sc-s5c7xj-4 lCUBE">
                 <div className="list-item">
-                  <div>
-                    <img
-                      src="https://frontend.tikicdn.com/_desktop-next/static/img/account/lock.png"
-                      className="icon"
-                      alt=""
-                    />
-                    <span>Đổi mật khẩu</span>
-                  </div>
-                  <div className="status">
-                    <span />
-                    <button className="button active">Cập nhật</button>
-                  </div>
+                  <div><img src="https://frontend.tikicdn.com/_desktop-next/static/img/account/lock.png" className="icon" alt="" /><span>Đổi mật khẩu</span></div>
+                  <div className="status"><span /><button className="button active">Cập nhật</button></div>
                 </div>
               </div>
               <span className="info-title">Liên kết mạng xã hội</span>
               <div className="styles__StyledListItem-sc-s5c7xj-4 lCUBE">
                 <div className="list-item">
-                  <div>
-                    <img
-                      src="https://frontend.tikicdn.com/_desktop-next/static/img/account/zalo.png"
-                      className="icon"
-                    />
-                    <span>Zalo</span>
-                  </div>
-                  <div className="status">
-                    <span />
-                    <button className="button active">Liên kết</button>
-                  </div>
+                  <div><img src="https://frontend.tikicdn.com/_desktop-next/static/img/account/zalo.png" className="icon" /><span>Zalo</span></div>
+                  <div className="status"><span /><button className="button active">Liên kết</button></div>
                 </div>
                 <div className="list-item">
-                  <div>
-                    <img
-                      src="https://frontend.tikicdn.com/_desktop-next/static/img/account/facebook.png"
-                      className="icon"
-                    />
-                    <span>Facebook</span>
-                  </div>
-                  <div className="status">
-                    <span />
-                    <button className="button active">Liên kết</button>
-                  </div>
+                  <div><img src="https://frontend.tikicdn.com/_desktop-next/static/img/account/facebook.png" className="icon" /><span>Facebook</span></div>
+                  <div className="status"><span /><button className="button active">Liên kết</button></div>
                 </div>
                 <div className="list-item">
-                  <div>
-                    <img
-                      src="https://frontend.tikicdn.com/_desktop-next/static/img/account/google.png"
-                      className="icon"
-                    />
-                    <span>Google</span>
-                  </div>
-                  <div className="status">
-                    <span />
-                    <button className="button active">Liên kết</button>
-                  </div>
+                  <div><img src="https://frontend.tikicdn.com/_desktop-next/static/img/account/google.png" className="icon" /><span>Google</span></div>
+                  <div className="status"><span /><button className="button active">Liên kết</button></div>
                 </div>
               </div>
             </div>
