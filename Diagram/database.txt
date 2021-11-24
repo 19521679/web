@@ -36,6 +36,8 @@ drop table if exists THUONGHIEU;
 
 drop table if exists VANCHUYEN;
 
+drop table if exists BAIVIET;
+
 /*==============================================================*/
 /* Table: BAOHANH                                               */
 /*==============================================================*/
@@ -279,6 +281,18 @@ create table VANCHUYEN
    SOHOADON             int not null,
    TRANGTHAI            text not null,
    primary key (MAVANCHUYEN)
+);
+
+/*==============================================================*/
+/* Table: BAIVIET                                             */
+/*==============================================================*/
+create table BAIVIET
+(  
+    MABAIVIET  INT NOT NULL , 
+    TIEUDE TEXT NOT NULL ,
+    MOTA  TEXT NOT NULL ,
+    NOIDUNG  TEXT NOT NULL , 
+    PRIMARY KEY (MABAIVIET)
 );
 
 alter table BAOHANH add constraint FK_REFERENCE_17 foreign key (IMEI)
