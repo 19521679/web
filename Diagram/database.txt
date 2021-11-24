@@ -1,0 +1,342 @@
+drop table if exists BAOHANH;
+
+drop table if exists CHITIETGIOHANG;
+
+drop table if exists CHITIETHOADON;
+
+drop table if exists CHITIETSANPHAM;
+
+drop table if exists CHITIETVANCHUYEN;
+
+drop table if exists DANHGIA;
+
+drop table if exists GIOHANG;
+
+drop table if exists HOADON;
+
+drop table if exists KHACHHANG;
+
+drop table if exists KHUYENMAI;
+
+drop table if exists LOAISANPHAM;
+
+drop table if exists NHACUNGCAP;
+
+drop table if exists NHANVIEN;
+
+drop table if exists PHIEUNHAPSANPHAM;
+
+drop table if exists SANPHAM;
+
+drop table if exists TAIKHOANKHACHHANG;
+
+drop table if exists TAIKHOANNHANVIEN;
+
+drop table if exists THUONGHIEU;
+
+drop table if exists VANCHUYEN;
+
+/*==============================================================*/
+/* Table: BAOHANH                                               */
+/*==============================================================*/
+create table BAOHANH
+(
+   MABAOHANH            int not null,
+   IMEI                 national varchar(20) not null,
+   NGAYBAOHANH          datetime not null,
+   CHIPHI               float not null,
+   GHICHU               text,
+   primary key (MABAOHANH)
+);
+
+/*==============================================================*/
+/* Table: CHITIETGIOHANG                                        */
+/*==============================================================*/
+create table CHITIETGIOHANG
+(
+   MAGIOHANG            int not null,
+   MASANPHAM            int not null,
+   SOLUONG              int not null,
+   primary key (MAGIOHANG, MASANPHAM)
+);
+
+/*==============================================================*/
+/* Table: CHITIETHOADON                                         */
+/*==============================================================*/
+create table CHITIETHOADON
+(
+   SOHOADON             int not null,
+   IMEI                 national varchar(20) not null,
+   /*SOLUONG              int not null,*/
+   TIEN                 float not null,
+   primary key (SOHOADON, IMEI)
+);
+
+/*==============================================================*/
+/* Table: CHITIETSANPHAM                                        */
+/*==============================================================*/
+create table CHITIETSANPHAM
+(
+   IMEI                 national varchar(20) not null,
+   MASANPHAM            int not null,
+   NGAYSANXUAT          datetime not null,
+   TINHTRANG            national varchar(30) not null,
+   primary key (IMEI)
+);
+
+/*==============================================================*/
+/* Table: CHITIETVANCHUYEN                                      */
+/*==============================================================*/
+create table CHITIETVANCHUYEN
+(
+   MACHITIETVANCHUYEN   int not null,
+   MAVANCHUYEN          int not null,
+   THOIDIEM             datetime not null,
+   TRANGTHAI            text not null,
+   primary key (MACHITIETVANCHUYEN, MAVANCHUYEN)
+);
+
+/*==============================================================*/
+/* Table: DANHGIA                                               */
+/*==============================================================*/
+create table DANHGIA
+(
+   MADANHGIA            int not null,
+   MASANPHAM            int not null,
+   MAKHACHHANG          int not null,
+   NOIDUNG              text,
+   SOSAO                int not null,
+   THOIGIAN             datetime not null,
+   IMAGE                text,
+   primary key (MADANHGIA)
+);
+
+/*==============================================================*/
+/* Table: GIOHANG                                               */
+/*==============================================================*/
+create table GIOHANG
+(
+   MAGIOHANG            int not null,
+   MAKHACHHANG          int not null,
+   TONGTIEN             float not null,
+   primary key (MAGIOHANG)
+);
+
+/*==============================================================*/
+/* Table: HOADON                                                */
+/*==============================================================*/
+create table HOADON
+(
+   SOHOADON             int not null,
+   MAKHACHHANG          int not null,
+   MAKHUYENMAI          int,
+   NGAYHOADON           datetime not null,
+   MANHANVIEN           int not null,
+   TONGTIEN             float not null,
+   primary key (SOHOADON)
+);
+
+/*==============================================================*/
+/* Table: KHACHHANG                                             */
+/*==============================================================*/
+create table KHACHHANG
+(
+   MAKHACHHANG          int not null,
+   TENKHACHHANG         national varchar(100) not null,
+   EMAIL                national varchar(30) not null,
+   SODIENTHOAI          national varchar(20) not null,
+   DIACHI               national varchar(200) not null,
+   NGAYSINH             datetime,
+   LOAIKHACHHANG        national varchar(30),
+   primary key (MAKHACHHANG)
+);
+
+/*==============================================================*/
+/* Table: KHUYENMAI                                             */
+/*==============================================================*/
+create table KHUYENMAI
+(
+   MAKHUYENMAI          int not null,
+   TENKHUYENMAI         varchar(30) not null,
+   TILEKHUYENMAI        float not null,
+   NGAYBATDAU           datetime not null,
+   NGAYKETTHUC          datetime not null,
+   DIEUKIEN             varchar(20),
+   primary key (MAKHUYENMAI)
+);
+
+/*==============================================================*/
+/* Table: LOAISANPHAM                                           */
+/*==============================================================*/
+create table LOAISANPHAM
+(
+   MALOAI               int not null,
+   TENLOAI              national varchar(30) not null,
+   primary key (MALOAI)
+);
+
+/*==============================================================*/
+/* Table: NHACUNGCAP                                            */
+/*==============================================================*/
+create table NHACUNGCAP
+(
+   MANHACUNGCAP         int not null,
+   TENNHACUNGCAP        national varchar(100) not null,
+   EMAIL                national varchar(100) not null,
+   SODIENTHOAI          national varchar(20) not null,
+   DIACHI               national varchar(200) not null,
+   primary key (MANHACUNGCAP)
+);
+
+/*==============================================================*/
+/* Table: NHANVIEN                                              */
+/*==============================================================*/
+create table NHANVIEN
+(
+   MANHANVIEN           int not null,
+   TENNHANVIEN          national varchar(30) not null,
+   EMAIL                national varchar(30) not null,
+   SODIENTHOAI          national varchar(20) not null,
+   DIACHI               national varchar(200) not null,
+   NGAYVAOLAM           datetime not null,
+   CCCD                 national varchar(20) not null,
+   NGAYSINH             datetime not null,
+   CHUCVU               national varchar(20) not null,
+   primary key (MANHANVIEN)
+);
+
+/*==============================================================*/
+/* Table: PHIEUNHAPSANPHAM                                      */
+/*==============================================================*/
+create table PHIEUNHAPSANPHAM
+(
+   MAPHIEUNHAP          int not null,
+   MASANPHAM            int not null,
+   MANHACUNGCAP         int not null,
+   SOLUONGNHAP          int not null,
+   NGAYNHAP             datetime not null,
+   TIENNHAP             float not null,
+   GHICHU               text,
+   primary key (MAPHIEUNHAP)
+);
+
+/*==============================================================*/
+/* Table: SANPHAM                                               */
+/*==============================================================*/
+create table SANPHAM
+(
+   MASANPHAM            int not null,
+   TENSANPHAM           national varchar(100) not null,
+   MALOAI               int not null,
+   MATHUONGHIEU         int not null,
+   SOLUONGTON           int not null,
+   MOTA                 text,
+   IMAGE                text,
+   THOIDIEMRAMAT        datetime,
+   DONGIA               float not null,
+   primary key (MASANPHAM)
+);
+
+/*==============================================================*/
+/* Table: TAIKHOANKHACHHANG                                     */
+/*==============================================================*/
+create table TAIKHOANKHACHHANG
+(
+   USERNAME             national varchar(300) not null,
+   PASSWORD             national varchar(20) not null,
+   MAKHACHHANG          int not null,
+   primary key (USERNAME)
+);
+
+/*==============================================================*/
+/* Table: TAIKHOANNHANVIEN                                      */
+/*==============================================================*/
+create table TAIKHOANNHANVIEN
+(
+   USERNAME             national varchar(300) not null,
+   PASSWORD             national varchar(20) not null,
+   MANHANVIEN           int not null,
+   primary key (USERNAME)
+);
+
+/*==============================================================*/
+/* Table: THUONGHIEU                                            */
+/*==============================================================*/
+create table THUONGHIEU
+(
+   MATHUONGHIEU         int not null,
+   TENTHUONGHIEU        national varchar(30) not null,
+   XUATXU               national varchar(30),
+   primary key (MATHUONGHIEU)
+);
+
+/*==============================================================*/
+/* Table: VANCHUYEN                                             */
+/*==============================================================*/
+create table VANCHUYEN
+(
+   MAVANCHUYEN          int not null,
+   SOHOADON             int not null,
+   TRANGTHAI            text not null,
+   primary key (MAVANCHUYEN)
+);
+
+alter table BAOHANH add constraint FK_REFERENCE_17 foreign key (IMEI)
+      references CHITIETSANPHAM (IMEI) on delete restrict on update restrict;
+
+alter table CHITIETGIOHANG add constraint FK_REFERENCE_20 foreign key (MAGIOHANG)
+      references GIOHANG (MAGIOHANG);
+
+alter table CHITIETGIOHANG add constraint FK_REFERENCE_5 foreign key (MASANPHAM)
+      references SANPHAM (MASANPHAM) on delete restrict on update restrict;
+
+alter table CHITIETHOADON add constraint FK_REFERENCE_15 foreign key (IMEI)
+      references CHITIETSANPHAM (IMEI) on delete restrict on update restrict;
+
+alter table CHITIETHOADON add constraint FK_REFERENCE_6 foreign key (SOHOADON)
+      references HOADON (SOHOADON) on delete restrict on update restrict;
+
+alter table CHITIETSANPHAM add constraint FK_REFERENCE_14 foreign key (MASANPHAM)
+      references SANPHAM (MASANPHAM) on delete restrict on update restrict;
+
+alter table CHITIETVANCHUYEN add constraint FK_REFERENCE_19 foreign key (MAVANCHUYEN)
+      references VANCHUYEN (MAVANCHUYEN) on delete restrict on update restrict;
+
+alter table DANHGIA add constraint FK_REFERENCE_11 foreign key (MASANPHAM)
+      references SANPHAM (MASANPHAM) on delete restrict on update restrict;
+
+alter table DANHGIA add constraint FK_REFERENCE_12 foreign key (MAKHACHHANG)
+      references KHACHHANG (MAKHACHHANG) on delete restrict on update restrict;
+
+alter table GIOHANG add constraint FK_REFERENCE_13 foreign key (MAKHACHHANG)
+      references KHACHHANG (MAKHACHHANG) on delete restrict on update restrict;
+
+alter table HOADON add constraint FK_REFERENCE_16 foreign key (MANHANVIEN)
+      references NHANVIEN (MANHANVIEN) on delete restrict on update restrict;
+
+alter table HOADON add constraint FK_REFERENCE_7 foreign key (MAKHACHHANG)
+      references KHACHHANG (MAKHACHHANG) on delete restrict on update restrict;
+
+alter table HOADON add constraint FK_REFERENCE_8 foreign key (MAKHUYENMAI)
+      references KHUYENMAI (MAKHUYENMAI) on delete restrict on update restrict;
+
+alter table PHIEUNHAPSANPHAM add constraint FK_REFERENCE_2 foreign key (MASANPHAM)
+      references SANPHAM (MASANPHAM) on delete restrict on update restrict;
+
+alter table PHIEUNHAPSANPHAM add constraint FK_REFERENCE_4 foreign key (MANHACUNGCAP)
+      references NHACUNGCAP (MANHACUNGCAP) on delete restrict on update restrict;
+
+alter table SANPHAM add constraint FK_REFERENCE_1 foreign key (MALOAI)
+      references LOAISANPHAM (MALOAI) on delete restrict on update restrict;
+
+alter table SANPHAM add constraint FK_REFERENCE_3 foreign key (MATHUONGHIEU)
+      references THUONGHIEU (MATHUONGHIEU) on delete restrict on update restrict;
+
+alter table TAIKHOANKHACHHANG add constraint FK_REFERENCE_18 foreign key (MAKHACHHANG)
+      references KHACHHANG (MAKHACHHANG) on delete restrict on update restrict;
+
+alter table TAIKHOANNHANVIEN add constraint FK_REFERENCE_9 foreign key (MANHANVIEN)
+      references NHANVIEN (MANHANVIEN) on delete restrict on update restrict;
+
+alter table VANCHUYEN add constraint FK_REFERENCE_10 foreign key (SOHOADON)
+      references HOADON (SOHOADON) on delete restrict on update restrict;
