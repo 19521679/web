@@ -4,7 +4,6 @@ import Mobile from "../../Components/Mobile";
 import Computer from "../../Components/Computer";
 import ExDevice from "../../Components/ExDevice";
 import Service from "../../Components/Service";
-import Article from "../../Components/Article";
 import Cart from "../../Components/Cart";
 import Login from "../../Components/Accounts/Login.js";
 import Register from "../../Components/Accounts/Register.js";
@@ -21,6 +20,7 @@ import ThongBaoCuaToi from "../../Components/Accounts/ThongBaoCuaToi";
 import QuanLyDonHang from "../../Components/Accounts/QuanLyDonHang";
 import SoDiaChi from "../../Components/Accounts/SoDiaChi";
 import SanPhamYeuThich from "../../Components/Accounts/SanPhamYeuThich";
+import Article from "../../Components/Article";
 
 const routes = [
   {

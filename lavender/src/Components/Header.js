@@ -73,7 +73,7 @@ const menus = [
     to: "/article",
     exact: false,
     list: [],
-  },
+  },  
 ];
 
 var MenuLink = ({ lable, to, activeOnlyWhenExact }) => {
