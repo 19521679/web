@@ -2,7 +2,7 @@ import React, { Component, useState, useEffect } from "react";
 import "./style.css";
 import axios from "axios";
 // import Product from "./Product.js";
-// import { withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import { bindActionCreators } from "redux";
 // import { connect } from "react-redux";
 // import * as cartAct from "../redux/actions/cartAct";
@@ -10,13 +10,11 @@ import axios from "axios";
 function Article() {
     const [posts, setPosts] = useState([]);
     useEffect(() => {
-        axios.get('https://raw.githubusercontent.com/19521679/web/main/test.json')
+        axios.get('https://localhost:5001/baiviet')
             .then(res => {
-                console.log(res);
                 setPosts(res.data);
             })
             .catch(err => {
-                console.log(err)
             })
     }, [])
     return (
@@ -34,22 +32,26 @@ function Article() {
                                         <div className="blog-list clearfix">
                                             {
                                                 posts.map(post => (
-                                                    <div className="blog-box row">
-                                                    <div className="col-md-4">
-                                                        <div className="post-media">
-                                                            <a href="tech-single.html" title>
-                                                                <img src={post.thumnail} alt="" className="img-fluid" />
-                                                                <div className="hovereffect" />
-                                                            </a>
+                                                    <Link
+                                                        to={`/article/${post.mabaiviet}`}
+                                                        className="list-group-item"
+                                                        key={post.mabaiviet}>
+                                                        <div className="blog-box row">
+                                                            <div className="col-md-4">
+                                                                <div className="post-media">
+                                                                    <img src={post.thumnail} alt="" className="img-fluid" />
+                                                                </div>
+                                                            </div>
+                                                            <div className="blog-meta big-meta col-md-8">
+                                                                <h5>{post.tieude}</h5>
+                                                                <p>{post.mota}</p>
+                                                                <small>21 July, 2017</small>
+                                                            </div>
+                                                            <hr />
                                                         </div>
-                                                    </div>
-                                                    <div className="blog-meta big-meta col-md-8">
-                                                        <h4><a href="tech-single.html" title>{post.tenbaiviet}</a></h4>
-                                                        <p>{post.mota}</p>
-                                                        <small>21 July, 2017</small>
-                                                    </div>
-                                                </div>
-                                                ))}
+                                                    </Link>
+                                                ))
+                                            }
                                         </div>
                                     </div>
                                 </div>
@@ -194,3 +196,4 @@ function Article() {
 }
 
 export default Article
+

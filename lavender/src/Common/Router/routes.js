@@ -21,8 +21,19 @@ import QuanLyDonHang from "../../Components/Accounts/QuanLyDonHang";
 import SoDiaChi from "../../Components/Accounts/SoDiaChi";
 import SanPhamYeuThich from "../../Components/Accounts/SanPhamYeuThich";
 import Article from "../../Components/Article";
+import ArticleDetail from "../../Components/Article/ArticleDetail";
 
 const routes = [
+  {
+    path: "/article",
+    exact: true,
+    main: () => <Article></Article>,
+  },
+  {
+    path: "/article/:mabaiviet",
+    exact: false,
+    main: ({match}) => <ArticleDetail match={match}></ArticleDetail>,
+  },
   {
     path: "/",
     exact: true,
@@ -54,11 +65,7 @@ const routes = [
     exact: false,
     main: () => <Service></Service>,
   },
-  {
-    path: "/article",
-    exact: false,
-    main: () => <Article></Article>,
-  },
+  
   {
     path: "/cart",
     exact: false,

@@ -19,10 +19,7 @@
     background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.1) 50%);
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00000000', GradientType=1);
 } */
-hr.invis {
-    border: 0;
-    margin: 2rem 0;
-}
+
 .sidebar .widget-title {
     display: block;
     font-size: 18px;
@@ -57,8 +54,7 @@ hr.invis {
     margin: 1rem 0;
 }
 
-element.style {
-}
+
 .sidebar .widget-title {
     display: block;
     font-size: 18px;
@@ -105,4 +101,8 @@ element.style {
     position: relative;
     text-transform: capitalize;
     border-radius: 0 !important;
+}
+
+a:hover{
+    color: rgb(66, 66, 66);
 }

@@ -59,7 +59,7 @@ namespace Back.Models
                     .HasColumnType("text")
                     .HasColumnName("THUMNAIL");
 
-                entity.Property(e => e.tieude)
+                entity.Property(e => e.mota)
                     .HasColumnType("text")
                     .HasColumnName("MOTA");
 
