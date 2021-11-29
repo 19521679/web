@@ -39,7 +39,8 @@ export default class index extends Component {
       })
       .catch((error) => {});
 
-      await hoadonAPI.processingBilling()
+    await hoadonAPI
+      .processingBilling()
       .then((success) => {
         processingBilling = success.data.value.$values;
       })
@@ -53,8 +54,7 @@ export default class index extends Component {
   }
   render() {
     return (
-      <div className="left-menu">
-        <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg gray-color">
+      <main className="main-content position-relative border-radius-lg left-menu">
           <nav
             className="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl  gray-color"
             id="navbarBlur"
@@ -73,13 +73,17 @@ export default class index extends Component {
                 </div>
                 <ul className="navbar-nav  justify-content-end">
                   <li className="nav-item d-flex align-items-center">
-                    <a className="nav-link text-body font-weight-bold px-0">
+                    <a
+                      className="nav-link text-body font-weight-bold px-0"
+                      href={() => false}
+                    >
                       <i className="fa fa-user me-sm-1" />
                       <span className="d-sm-inline d-none">Sign In</span>
                     </a>
                   </li>
                   <li className="nav-item d-xl-none ps-3 d-flex align-items-center">
                     <a
+                      href={() => false}
                       className="nav-link text-body p-0"
                       id="iconNavbarSidenav"
                     >
@@ -91,13 +95,13 @@ export default class index extends Component {
                     </a>
                   </li>
                   <li className="nav-item px-3 d-flex align-items-center">
-                    <a href="javascript:;" className="nav-link text-body p-0">
+                    <a href={() => false} className="nav-link text-body p-0">
                       <i className="fa fa-cog fixed-plugin-button-nav cursor-pointer" />
                     </a>
                   </li>
                   <li className="nav-item dropdown pe-2 d-flex align-items-center">
                     <a
-                      href="javascript:;"
+                      href={() => false}
                       className="nav-link text-body p-0"
                       id="dropdownMenuButton"
                       data-bs-toggle="dropdown"
@@ -112,11 +116,12 @@ export default class index extends Component {
                       <li className="mb-2">
                         <a
                           className="dropdown-item border-radius-md"
-                          href="javascript:;"
+                          href={() => false}
                         >
                           <div className="d-flex py-1">
                             <div className="my-auto">
                               <img
+                                alt=""
                                 src="./assets/img/team-2.jpg"
                                 className="avatar avatar-sm  me-3 "
                               />
@@ -139,11 +144,12 @@ export default class index extends Component {
                       <li className="mb-2">
                         <a
                           className="dropdown-item border-radius-md"
-                          href="javascript:;"
+                          href={() => false}
                         >
                           <div className="d-flex py-1">
                             <div className="my-auto">
                               <img
+                                alt=""
                                 src="./assets/img/small-logos/logo-spotify.svg"
                                 className="avatar avatar-sm bg-gradient-dark  me-3 "
                               />
@@ -165,7 +171,7 @@ export default class index extends Component {
                       <li>
                         <a
                           className="dropdown-item border-radius-md"
-                          href="javascript:;"
+                          href={() => false}
                         >
                           <div className="d-flex py-1">
                             <div className="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
@@ -405,6 +411,7 @@ export default class index extends Component {
                       <div className="col-lg-6 col-5 my-auto text-end">
                         <div className="dropdown float-lg-end pe-4">
                           <a
+                            href={() => false}
                             className="cursor-pointer"
                             id="dropdownTable"
                             data-bs-toggle="dropdown"
@@ -418,24 +425,24 @@ export default class index extends Component {
                           >
                             <li>
                               <a
+                                href={() => false}
                                 className="dropdown-item border-radius-md"
-                                href="javascript:;"
                               >
                                 Action
                               </a>
                             </li>
                             <li>
                               <a
+                                href={() => false}
                                 className="dropdown-item border-radius-md"
-                                href="javascript:;"
                               >
                                 Another action
                               </a>
                             </li>
                             <li>
                               <a
+                                href={() => false}
                                 className="dropdown-item border-radius-md"
-                                href="javascript:;"
                               >
                                 Something else here
                               </a>
@@ -494,82 +501,27 @@ export default class index extends Component {
                   </div>
                   <div className="card-body p-3">
                     <div className="timeline timeline-one-side">
-                    {
-                      function(){
-                        let result=null;
-                        result = this.state.processingBilling.map((value, key)=>{
-                          return (<ProcessingBill bill={value} key={key}></ProcessingBill>);
-                        })
+                      {function () {
+                        let result = null;
+                        result = this.state.processingBilling.map(
+                          (value, key) => {
+                            return (
+                              <ProcessingBill
+                                bill={value}
+                                key={key}
+                              ></ProcessingBill>
+                            );
+                          }
+                        );
                         return result;
-                      }.bind(this)()
-                    }
+                      }.bind(this)()}
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <footer className="footer py-4  ">
-              <div className="container-fluid">
-                <div className="row align-items-center justify-content-lg-between">
-                  <div className="col-lg-6 mb-lg-0 mb-4">
-                    <div className="copyright text-center text-sm text-muted text-lg-start">
-                      © , made with <i className="fa fa-heart" /> by
-                      <a
-                        href="https://www.creative-tim.com"
-                        className="font-weight-bold"
-                        target="_blank"
-                      >
-                        Creative Tim
-                      </a>
-                      for a better web.
-                    </div>
-                  </div>
-                  <div className="col-lg-6">
-                    <ul className="nav nav-footer justify-content-center justify-content-lg-end">
-                      <li className="nav-item">
-                        <a
-                          href="https://www.creative-tim.com"
-                          className="nav-link text-muted"
-                          target="_blank"
-                        >
-                          Creative Tim
-                        </a>
-                      </li>
-                      <li className="nav-item">
-                        <a
-                          href="https://www.creative-tim.com/presentation"
-                          className="nav-link text-muted"
-                          target="_blank"
-                        >
-                          About Us
-                        </a>
-                      </li>
-                      <li className="nav-item">
-                        <a
-                          href="https://www.creative-tim.com/blog"
-                          className="nav-link text-muted"
-                          target="_blank"
-                        >
-                          Blog
-                        </a>
-                      </li>
-                      <li className="nav-item">
-                        <a
-                          href="https://www.creative-tim.com/license"
-                          className="nav-link pe-0 text-muted"
-                          target="_blank"
-                        >
-                          License
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </footer>
           </div>
         </main>
-      </div>
     );
   }
 }

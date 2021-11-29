@@ -14,9 +14,8 @@ const store = configureStore();
 class App extends React.Component {
   render() {
     return (
-      <Provider store={store}>
+      <Provider store={store} >
         <ToastContainer />
-
         {this.props.location.pathname.includes("/admin") ?  <LeftMenu>Home</LeftMenu> : <Header /> }
         {/* {this.props.location.pathname.includes("/lmember")?<LMember></LMember>:null} */}
         {this.showContentMenus(routes)}

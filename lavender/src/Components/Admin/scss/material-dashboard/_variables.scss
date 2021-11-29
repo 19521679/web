@@ -1122,80 +1122,7 @@ $zindex-tooltip:                    1070 !default;
 // scss-docs-end zindex-stack
 
 
-// Navs
 
-$nav-link-padding-y:                .5rem !default;
-$nav-link-padding-x:                1rem !default;
-$nav-link-font-size:                null !default;
-$nav-link-font-weight:              null !default;
-$nav-link-color:                    null !default;
-$nav-link-hover-color:              null !default;
-$nav-link-transition:               color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out !default;
-$nav-link-disabled-color:           $gray-600 !default;
-$nav-link-footer-padding:           .25rem !default;
-
-$nav-tabs-border-color:             $gray-300 !default;
-$nav-tabs-border-width:             $border-width !default;
-$nav-tabs-border-radius:            $border-radius-md !default;
-$nav-tabs-link-hover-border-color:  $gray-200 $gray-200 $nav-tabs-border-color !default;
-$nav-tabs-link-active-color:        $gray-700 !default;
-$nav-tabs-link-active-bg:           $body-bg !default;
-$nav-tabs-link-active-border-color: $gray-300 $gray-300 $nav-tabs-link-active-bg !default;
-
-$nav-pills-border-radius:           0.75rem !default;
-$nav-pills-link-active-color:       $dark !default;
-$nav-pills-link-active-bg:          $white !default;
-$nav-pills-link-transition:         background-color .3s ease !default;
-$nav-pills-background:              $gray-100 !default;
-$nav-pills-vertical-background:     transparent !default;
-$nav-pills-vertical-radius:         1.1875rem !default;
-$nav-pills-vertical-link-radius:    .875rem !default;
-
-
-// Navbar
-
-$navbar-padding-y:                  $spacer / 2 !default;
-$navbar-padding-x:                  null !default;
-$navbar-box-shadow:                 0 2px 12px 0 rgba(0, 0, 0, .16) !default;
-
-$navbar-nav-link-padding-x:         .5rem !default;
-$navbar-nav-link-padding:           $navbar-nav-link-padding-x 1rem !default;
-
-$navbar-brand-font-size:            $font-size-lg !default;
-// Compute the navbar-brand padding-y so the navbar-brand will have the same height as navbar-text and nav-link
-$nav-link-height:                   $font-size-base * $line-height-base + $nav-link-padding-y * 2 !default;
-$navbar-brand-height:               $navbar-brand-font-size * $line-height-base !default;
-$navbar-brand-padding-y:            ($nav-link-height - $navbar-brand-height) / 2 !default;
-$navbar-brand-margin-right:         1rem !default;
-
-$navbar-toggler-padding-y:          .25rem !default;
-$navbar-toggler-padding-x:          .75rem !default;
-$navbar-toggler-font-size:          $font-size-lg !default;
-$navbar-toggler-border-radius:      $btn-border-radius !default;
-$navbar-toggler-focus-width:        $btn-focus-width !default;
-$navbar-toggler-transition:         box-shadow .15s ease-in-out !default;
-
-$navbar-blur-bg-color:              rgba(255, 255, 255, .8) !default;
-$navbar-blur-dark-bg-color:         rgba(2, 5, 22, .8) !default;
-
-$navbar-dark-color:                 rgba($white, .85) !default;
-$navbar-dark-hover-color:           rgba($white, .75) !default;
-$navbar-dark-active-color:          $white !default;
-$navbar-dark-disabled-color:        rgba($white, .25) !default;
-$navbar-dark-toggler-icon-bg:       url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-dark-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
-$navbar-dark-toggler-border-color:  rgba($white, .1) !default;
-
-$navbar-light-color:                $dark !default;
-$navbar-light-hover-color:          rgba($dark, .7) !default;
-$navbar-light-active-color:         rgba($dark, .9) !default;
-$navbar-light-disabled-color:       rgba($dark, .3) !default;
-$navbar-light-toggler-icon-bg:      url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'><path stroke='#{$navbar-light-color}' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/></svg>") !default;
-$navbar-light-toggler-border-color: rgba($dark, .1) !default;
-
-$navbar-light-brand-color:          $navbar-light-active-color !default;
-$navbar-light-brand-hover-color:    $navbar-light-active-color !default;
-$navbar-dark-brand-color:           $navbar-dark-active-color !default;
-$navbar-dark-brand-hover-color:     $navbar-dark-active-color !default;
 
 // Sidenav toggler
 $sidenav-toggler-width:              18px !default;
@@ -1290,26 +1217,6 @@ $pagination-disabled-border-color:  $gray-300 !default;
 $pagination-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
 
 // Cards
-
-$card-spacer-y:                     $spacer !default;
-$card-spacer-x:                     $spacer !default;
-$card-title-spacer-y:               $spacer / 2 !default;
-$card-border-width:                 0 !default;
-$card-border-radius:                $border-radius-xl !default;
-$card-border-color:                 rgba($black, .125) !default;
-$card-inner-border-radius:          subtract($card-border-radius, $card-border-width) !default;
-$card-cap-padding-y:                $card-spacer-y / 2 !default;
-$card-cap-padding-x:                $card-spacer-x !default;
-$card-cap-bg:                       $white !default;
-$card-cap-color:                    null !default;
-$card-height:                       null !default;
-$card-color:                        null !default;
-$card-bg:                           $white !default;
-
-$card-img-overlay-padding:          $spacer !default;
-
-$card-group-margin:                 $grid-gutter-width / 2 !default;
-
 
 // Accordion
 $accordion-padding-y:                     1rem !default;
@@ -1648,8 +1555,6 @@ $tilt-transform-up-transition:      all 0.5s !default;
 @import "variables/dropdowns";
 @import 'variables/header';
 @import 'variables/info-areas';
-@import 'variables/navbar';
-@import 'variables/navbar-vertical';
 @import 'variables/utilities';
 @import 'variables/utilities-extend';
 @import 'variables/misc';

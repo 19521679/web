@@ -35,7 +35,7 @@
   margin-bottom: 12px;
   position: sticky;
   top: 20px;
-  z-index: 99;
+  z-index: 0;
 }
 .dioUnE .row {
   display: flex;
@@ -71,12 +71,12 @@
   position: relative;
   cursor: pointer;
   border-radius: 4px;
-  background: rgb(255, 255, 255);
   color: rgb(36, 36, 36);
   z-index: 2;
 }
 .hNjxWW {
   display: inline-block;
+  z-index: 0;
 }
 .hNjxWW input[type="checkbox"] {
   position: absolute;

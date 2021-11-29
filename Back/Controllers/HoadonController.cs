@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 using Microsoft.AspNetCore.Authentication;
+using Back.Models.Cart;
 
 namespace Back.Controllers
 {
@@ -35,23 +36,6 @@ namespace Back.Controllers
             var hoadonlist = await (from h in lavenderContext.Hoadon
                                     select h).OrderByDescending(x => x.Ngayhoadon).Take(20).ToListAsync();
             if (hoadonlist.Count == 0) return StatusCode(404);
-            //Console.WriteLine("hoadon" + hoadonlist.Count());
-            //foreach (var i in hoadonlist)
-            //{
-            //    var e = lavenderContext.Entry(i);
-            //    await e.Collection(x => x.Vanchuyens).LoadAsync();
-            //    //await e.Reference(x => x.MakhachhangNavigation).LoadAsync();
-
-            //    var chitiethoadon = await (from c in lavenderContext.Chitiethoadon
-            //                               where c.Sohoadon == i.Sohoadon
-            //                               select c).FirstOrDefaultAsync();
-            //    var chitietsanpham = await (from c in lavenderContext.Chitietsanpham
-            //                                where c.Imei == chitiethoadon.Imei
-            //                                select c).FirstOrDefaultAsync();
-            //    var ec = lavenderContext.Entry(chitietsanpham);
-            //    await ec.Reference(s => s.MasanphamNavigation).LoadAsync();
-            //}
-            //Console.WriteLine("hoadonlist" + hoadonlist.ToString());
             return StatusCode(200, Json(hoadonlist));
         }
 
@@ -61,7 +45,7 @@ namespace Back.Controllers
         {
             var hoadonlist = await (from h in lavenderContext.Hoadon
                                     select h).OrderByDescending(x => x.Ngayhoadon).Take(20).ToListAsync();
-            if (hoadonlist.Count == 0) return StatusCode(404);
+            if (hoadonlist == null || hoadonlist.Count() == 0) return StatusCode(404);
             var newlist = new List<Hoadon>();
             foreach (var i in hoadonlist)
             {
@@ -70,16 +54,6 @@ namespace Back.Controllers
                 await e.Collection(x => x.Vanchuyens).LoadAsync();
                 if (!i.Vanchuyens.ElementAt(0).Trangthai.Equals("Đang xử lý"))
                     continue;
-                //await e.Reference(x => x.MakhachhangNavigation).LoadAsync();
-                ////e.Collection(x => x.Chitiethoadons).Load();
-                //var chitiethoadon = await (from c in lavenderContext.Chitiethoadon
-                //                           where c.Sohoadon == i.Sohoadon
-                //                           select c).FirstOrDefaultAsync();
-                //var chitietsanpham = await (from c in lavenderContext.Chitietsanpham
-                //                            where c.Imei == chitiethoadon.Imei
-                //                            select c).FirstOrDefaultAsync();
-                //var ec = lavenderContext.Entry(chitietsanpham);
-                //await ec.Reference(s => s.MasanphamNavigation).LoadAsync();
                 newlist.Add(i);
             }
             return StatusCode(200, Json(newlist));
@@ -89,6 +63,7 @@ namespace Back.Controllers
         [HttpGet]
         public async Task<IActionResult> DoanhThuTheoThang([FromQuery] int thang, int nam)
         {
+
             var hoadonlist = await (from h in lavenderContext.Hoadon
                                         //where h.Ngayhoadon.Month.ToString().Equals(thang.ToString())
                                         //&& h.Ngayhoadon.Year.ToString().Equals(nam.ToString())
@@ -98,7 +73,7 @@ namespace Back.Controllers
             var newlist = new List<Hoadon>();
             foreach (var i in hoadonlist)
             {
-                if (i.Ngayhoadon.Month == thang && i.Ngayhoadon.Year == nam)
+                if (((DateTime)i.Ngayhoadon).Month == thang && ((DateTime)i.Ngayhoadon).Year == nam)
                     newlist.Add(i);
             }
             if (newlist == null || newlist.Count == 0) return StatusCode(200, Json(new { tongtien = 0 }));
@@ -117,13 +92,16 @@ namespace Back.Controllers
             var sohoadon = int.Parse(json.GetString("sohoadon"));
             var makhachhang = int.Parse(json.GetString("makhachhang"));
             var makhuyenmai = int.Parse(json.GetString("makhuyenmai"));
-            var ngayhoadon = DateTime.Parse(json.GetString("ngayhoadon"));
+            var ngayhoadon = DateTime.Parse(json.GetString("ngayhoadon")).ToLocalTime();
             var manhanvien = int.Parse(json.GetString("manhanvien"));
             var tongtien = int.Parse(json.GetString("tongtien"));
             Chitiethoadon[] chitiethoadons = Newtonsoft.Json.JsonConvert.DeserializeObject<Chitiethoadon[]>(json.GetString("chitiethoadon"));
 
             Hoadon temp = new Hoadon();
-            temp.Sohoadon = sohoadon;
+            if (sohoadon != 0)
+            {
+                temp.Sohoadon = sohoadon;
+            }
             temp.Makhachhang = makhachhang;
             temp.Makhuyenmai = makhuyenmai;
             temp.Ngayhoadon = ngayhoadon;
@@ -132,7 +110,7 @@ namespace Back.Controllers
 
             Hoadon hoadon = null;
 
-            if (!temp.Sohoadon.Equals(""))
+            if (temp.Sohoadon != null)
             {
                 hoadon = await lavenderContext.Hoadon.SingleOrDefaultAsync(b => b.Sohoadon == temp.Sohoadon);
                 hoadon.Makhachhang = temp.Makhachhang;
@@ -148,10 +126,9 @@ namespace Back.Controllers
                 await lavenderContext.AddAsync(temp);
                 await lavenderContext.SaveChangesAsync();
                 hoadon = await (from h in lavenderContext.Hoadon
-                                where h.Makhachhang == hoadon.Makhachhang
-                                select h).OrderByDescending(x => x.Sohoadon).Take(1).FirstOrDefaultAsync();
-            }
+                                select h).OrderByDescending(x => x.Ngayhoadon).FirstOrDefaultAsync();
 
+            }
 
             foreach (var i in chitiethoadons)
             {
@@ -165,6 +142,7 @@ namespace Back.Controllers
                 }
                 else
                 {
+                    i.Sohoadon = (int)hoadon.Sohoadon;
                     await lavenderContext.AddAsync(i);
                 }
                 await lavenderContext.SaveChangesAsync();
@@ -178,22 +156,92 @@ namespace Back.Controllers
         public async Task<IActionResult> DeleteBill(int sohoadon)
         {
             var chitiethoadons = await (from c in lavenderContext.Chitiethoadon
-                                  where c.Sohoadon == sohoadon
-                                  select c).ToListAsync();
-            foreach(var i in chitiethoadons)
+                                        where c.Sohoadon == sohoadon
+                                        select c).ToListAsync();
+            foreach (var i in chitiethoadons)
             {
                 lavenderContext.Remove(i);
             }
             await lavenderContext.SaveChangesAsync();
 
+            var vanchuyens = await (from v in lavenderContext.Vanchuyen
+                                    where v.Sohoadon == sohoadon
+                                    select v).ToListAsync();
+            foreach (var i in vanchuyens)
+            {
+                lavenderContext.Remove(i);
+            }
+
+            await lavenderContext.SaveChangesAsync();
             Hoadon hoadon = await lavenderContext.Hoadon.SingleOrDefaultAsync(x => x.Sohoadon == sohoadon);
             if (hoadon != null)
             {
                 lavenderContext.Remove(hoadon);
                 await lavenderContext.SaveChangesAsync();
             }
+
+
             return StatusCode(200);
         }
 
+        [Route("/muahang")]
+        [HttpPost]
+        public async Task<IActionResult> MuaHang(int makhachhang, int makhuyenmai, float tongtien, [FromBody] JsonElement json)
+        {
+            CartPayingObject[] cartpayinglist = Newtonsoft.Json.JsonConvert.DeserializeObject<CartPayingObject[]>(json.ToString());
+            //Console.WriteLine("cart" + cartpayinglist[0]);
+            Hoadon hoadon = new Hoadon();
+            hoadon.Makhachhang = makhachhang;
+            if (makhuyenmai != 0) hoadon.Makhuyenmai = makhuyenmai;
+            hoadon.Ngayhoadon = DateTime.Now;
+            hoadon.Tongtien = tongtien;
+            await lavenderContext.AddAsync(hoadon);
+            await lavenderContext.SaveChangesAsync();
+            var newhoadon = await (from h in lavenderContext.Hoadon
+                                   where h.Makhachhang == hoadon.Makhachhang
+                                   && h.Makhuyenmai == hoadon.Makhuyenmai
+                                   orderby h.Ngayhoadon descending
+                                   select h).FirstOrDefaultAsync();
+            List<Chitietsanpham> listsanphamban = new List<Chitietsanpham>();
+            hoadon = newhoadon;
+            foreach (var i in cartpayinglist)
+            {
+                for (int j = 0; j < i.Soluong; j++)
+                {
+                    var chitietsanpham = await (from x in lavenderContext.Chitietsanpham
+                                                where x.Masanpham == i.Masanpham
+                                                && x.Dungluong == i.Dungluong
+                                                && x.Mausac == i.Mausac
+                                                && x.Tinhtrang == "Sẵn có"
+                                                select x).FirstOrDefaultAsync();
+                    if (chitietsanpham == null)
+                    {
+                        lavenderContext.Remove(hoadon);
+                        lavenderContext.SaveChanges();
+                        return StatusCode(200, Json(new { tinhtrang = "hethang" }));
+                    }
+                    Console.WriteLine(chitietsanpham);
+                    chitietsanpham.Tinhtrang = "Đã bán";
+                    await lavenderContext.SaveChangesAsync();
+                    listsanphamban.Add(chitietsanpham);
+
+                    Chitiethoadon chitiethoadon = new Chitiethoadon();
+                    chitiethoadon.Sohoadon = (int)hoadon.Sohoadon;
+                    chitiethoadon.Imei = chitietsanpham.Imei;
+                    chitiethoadon.Tien = chitietsanpham.Giamoi;
+
+                    await lavenderContext.AddAsync(chitiethoadon);
+                    await lavenderContext.SaveChangesAsync();
+                }
+
+            }
+
+            Vanchuyen vanchuyen = new Vanchuyen();
+            vanchuyen.Sohoadon = (int)hoadon.Sohoadon;
+            vanchuyen.Trangthai = "Đang xử lý";
+            await lavenderContext.AddAsync(vanchuyen);
+            await lavenderContext.SaveChangesAsync();
+            return StatusCode(200, Json(new { tinhtrang = "thanhcong" }));
+        }
     }
 }

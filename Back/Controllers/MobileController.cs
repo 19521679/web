@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Back.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -28,10 +29,10 @@ namespace Back.Controllers
         }
 
         [Route("mobile")]
-        public IActionResult GetAllMobile()
+        public async Task<IActionResult> GetAllMobile()
         {
-            var sanpham = lavenderContext.Sanpham.Where(s => s.Maloai==1).ToList();
-            return StatusCode(200, sanpham);
+            var sanpham = await lavenderContext.Sanpham.Where(s => s.Maloai==1).ToListAsync();
+            return StatusCode(200, Json(sanpham));
         }
 
     }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./LMember.css";
 import routes from "./routes";
+import { Redirect } from 'react-router';
 import { Route, Switch, BrowserRouter, Link } from "react-router-dom";
 
 export default class index extends Component {
@@ -8,7 +9,7 @@ export default class index extends Component {
     return (
       <section>
         <BrowserRouter>
-          <div className="container-fluid">
+          <div className="container">
           <div className="row">
           <div className="col-xs-3 col-sm-3 col-md-3 col-lg-3">
               <div className="leftmember">
@@ -76,22 +77,6 @@ export default class index extends Component {
                             <span>Quản lý đơn hàng</span>
                           </Link>
                         </li>
-                        <li>
-                          <Link className to="/lmember/sodiachi">
-                            <svg
-                              stroke="currentColor"
-                              fill="currentColor"
-                              strokeWidth={0}
-                              viewBox="0 0 24 24"
-                              height="1em"
-                              width="1em"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
-                            </svg>
-                            <span>Sổ địa chỉ</span>
-                          </Link>
-                        </li>
 
                         <li>
                           <Link className to="/lmember/sanphamyeuthich">
@@ -119,6 +104,8 @@ export default class index extends Component {
             <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
               <div className="rightmember">{this.showContentMenus(routes)}</div>
             </div>
+            <Redirect to="/lmember/thongtintaikhoan"/>
+
             </div>
           </div>
         </BrowserRouter>

@@ -4,11 +4,12 @@ import * as billApi from "../../apis/billing";
 import * as myToast from "../../../Common/helper/toastHelper";
 
 export default class DeleteBill extends Component {
-  saveChanges() {
-    billApi
+  async saveChanges() {
+    await billApi
       .deleteBill(this.props.bill.sohoadon)
       .then(() => {
         myToast.toastSucces("Xoá thành công");
+        this.props.handleSave();
       })
       .catch((error) => {
         myToast.toastError("Xoá thất bại");
@@ -21,7 +22,6 @@ export default class DeleteBill extends Component {
         handleClose={this.props.handleClose}
         handleSave={() => {
           this.saveChanges();
-          this.props.handleSave();
         }}
         title={"Xoá hoá đơn"}
       >

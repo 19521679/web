@@ -21,6 +21,9 @@
     </PackageReference>
     <PackageReference Include="MySql.EntityFrameworkCore" Version="5.0.8" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="runtime.osx.10.10-x64.CoreCompat.System.Drawing" Version="5.8.64" />
+  <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
+  <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,8 +37,12 @@
     <None Remove="Newtonsoft.Json" />
     <None Remove="Json.Net" />
     <None Remove="Common\" />
+    <None Remove="Models\Cart\" />
+    <None Remove="System.Drawing.Common" />
+    <None Remove="Microsoft.AspNetCore.Http.Abstractions" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />
+    <Folder Include="Models\Cart\" />
   </ItemGroup>
 </Project>

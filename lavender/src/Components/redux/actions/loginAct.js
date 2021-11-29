@@ -25,9 +25,9 @@ export const postLoginFailed = (error) => {
   };
 };
 
-export const postLoginReport = (req) => {
-  return (dispatch) => {
-    loginApi
+export const postLoginReport =  (req) => {
+  return async (dispatch) => {
+    await loginApi
       .login(req)
       .then((success) => {
         if (success.status===200) dispatch(postLoginSuccess(success.data));

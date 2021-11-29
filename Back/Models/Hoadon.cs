@@ -14,12 +14,12 @@ namespace Back.Models
         //    Vanchuyens = new HashSet<Vanchuyen>();
         //}
 
-        public int Sohoadon { get; set; }
+        public int? Sohoadon { get; set; }
         public int Makhachhang { get; set; }
         public int? Makhuyenmai { get; set; }
-        public DateTime Ngayhoadon { get; set; }
-        public int Manhanvien { get; set; }
-        public double Tongtien { get; set; }
+        public DateTime? Ngayhoadon { get; set; }
+        public int? Manhanvien { get; set; }
+        public double? Tongtien { get; set; }
 
         public virtual Khachhang MakhachhangNavigation { get; set; }
         public virtual Khuyenmai MakhuyenmaiNavigation { get; set; }

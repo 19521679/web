@@ -165,8 +165,8 @@
   left: 0;
   right: 0;
   margin: auto;
-  height: calc(13vw);
-  width: calc(13vw);
+  height: calc(10vw);
+  width: calc(11vw);
   display: block;
 
   transition-duration: 0.2s;

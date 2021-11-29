@@ -1,9 +1,9 @@
 import axiosServices from "./axiosServices";
 import { API_ENDPOINT } from "../../Common/constants/index";
 
-export const loadCart = (request) => {
+export const loadCart = (makhachhang) => {
   const url = "/cart";
-  return axiosServices.get(`${API_ENDPOINT}${url}?makhachhang=${request.makhachhang}`);
+  return axiosServices.get(`${API_ENDPOINT}${url}?makhachhang=${makhachhang}`);
 };
 export const addToCart = (data) => {
     const url="/add-to-cart";

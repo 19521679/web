@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as hoadonAPI from "../../apis/billing";
+import * as noteAPI from "../../apis/note";
 import BillItem from "./BillItem";
 import ImportItem from "./ImportItem";
 import "./style.css";
@@ -7,21 +8,19 @@ import AddBill from "./AddBill";
 import AddNote from "./AddNote";
 
 export default class index extends Component {
- 
   state = {
     billing: [],
     importBilling: [],
-    modal :0
+    modal: 0,
   };
-  showModal =(index)=>{
-    this.setState({modal:index});
-  }
-  hideModal =()=>{
-    this.setState({modal:0});
-  }
-  async componentDidMount() {
+  showModal = (index) => {
+    this.setState({ modal: index });
+  };
+  hideModal = () => {
+    this.setState({ modal: 0 });
+  };
+  async loadBill() {
     let billing = [];
-    let importBilling = [];
     await hoadonAPI
       .twentyhoadon()
       .then((success) => {
@@ -29,27 +28,50 @@ export default class index extends Component {
       })
       .catch((error) => {});
 
-    await hoadonAPI
-      .importBilling()
+    this.setState({
+      billing: billing,
+    });
+  }
+  async loadImport() {
+    let importBilling = [];
+    await noteAPI
+      .importNote()
       .then((success) => {
         importBilling = success.data.value.$values;
       })
       .catch((error) => {});
-    this.setState({
-      billing: billing,
-      importBilling: importBilling,
-    });
+    this.setState({ importBilling: importBilling });
+  }
+  async componentDidMount() {
+    this.loadBill();
+    this.loadImport();
   }
   render() {
     return (
-      <main className="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+      <main className="main-content position-relative border-radius-lg left-menu">
         <>
-        { (()=>{
-          if (this.state.modal===1)
-          return (<AddBill handleClose={this.hideModal.bind(this)} handleSave={this.hideModal.bind(this)}></AddBill>);
-          else if (this.state.modal===2)
-          return (<AddNote handleClose={this.hideModal.bind(this)} handleSave={this.hideModal.bind(this)}></AddNote>);
-        }).bind(this)()}
+          {(() => {
+            if (this.state.modal === 1)
+              return (
+                <AddBill
+                  handleClose={this.hideModal.bind(this)}
+                  handleSave={(() => {
+                    this.loadBill();
+                    this.hideModal.bind(this)();
+                  }).bind(this)}
+                ></AddBill>
+              );
+            else if (this.state.modal === 2)
+              return (
+                <AddNote
+                  handleClose={this.hideModal.bind(this)}
+                  handleSave={(() => {
+                    this.loadImport();
+                    this.hideModal.bind(this)();
+                  }).bind(this)}
+                ></AddNote>
+              );
+          }).bind(this)()}
         </>
         <nav
           className="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl"
@@ -332,7 +354,7 @@ export default class index extends Component {
                           <div className="">
                             <span className="text-xs">Chọn ngày </span>
                             <input
-                            className="form-control border "
+                              className="form-control border "
                               type="date"
                               id="start"
                               name="trip-start"
@@ -360,7 +382,7 @@ export default class index extends Component {
                           <div className="">
                             <span className="text-xs">Chọn ngày </span>
                             <input
-                            className="form-control border "
+                              className="form-control border "
                               type="date"
                               id="start"
                               name="trip-start"
@@ -395,7 +417,10 @@ export default class index extends Component {
                     <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                       <div className="col-6 text-end">
                         <div className="btn-add-bill">
-                          <a className="btn bg-gradient-dark mb-0 mt-4 " onClick={() => this.showModal(1)}>
+                          <a
+                            className="btn bg-gradient-dark mb-0 mt-4 "
+                            onClick={() => this.showModal(1)}
+                          >
                             <i class="bi bi-plus"></i> Thêm mới hoá đơn
                           </a>
                         </div>
@@ -408,11 +433,9 @@ export default class index extends Component {
                   <ul className="list-group">
                     {function () {
                       let result = null;
-                      result = this.state.billing.map(
-                        (value, key) => {
-                          return <BillItem bill={value} key={key}></BillItem>;
-                        }
-                      );
+                      result = this.state.billing.map((value, key) => {
+                        return <BillItem bill={value} key={key} handleSave={this.loadBill.bind(this)}></BillItem>;
+                      });
                       return result;
                     }.bind(this)()}
                   </ul>
@@ -429,7 +452,7 @@ export default class index extends Component {
                     <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                       <div className="col-6 text-end">
                         <div className="btn-import-bill">
-                          <a className="btn bg-gradient-dark mb-0 mt-4">
+                          <a className="btn bg-gradient-dark mb-0 mt-4" onClick={() => this.showModal(2)}>
                             <i class="bi bi-plus"></i> Thêm mới phiếu nhập
                           </a>
                         </div>
@@ -443,7 +466,7 @@ export default class index extends Component {
                     {function () {
                       let result = null;
                       result = this.state.importBilling.map((value, key) => {
-                        return <ImportItem bill={value} key={key}></ImportItem>;
+                        return <ImportItem bill={value} key={key} handleSave={this.loadImport.bind(this)}></ImportItem>;
                       });
                       return result;
                     }.bind(this)()}

@@ -27,5 +27,10 @@
 .trademark-item .trademark-icon{
     height: 15px;
 }
+.trademark-selected{
+  border: 1px solid #D70018;
+  background: #FEF2F2;
+  color: #D70018;
+}
 
 

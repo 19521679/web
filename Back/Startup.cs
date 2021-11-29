@@ -110,12 +110,7 @@ namespace Back
                     corsService.ApplyResult(corsResult, ctx.Context.Response);
                 }
             });
-            // app.UseCors("MyPolicy");
-            // app.UseCors(builder => builder
-            //     .AllowAnyOrigin()
-            //     .AllowAnyMethod()
-            //     .AllowAnyHeader()
-            //     .AllowCredentials());
+           
             app.UseCors("MyPolicy");
             app.UseRouting();
 

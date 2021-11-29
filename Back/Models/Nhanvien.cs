@@ -23,6 +23,7 @@ namespace Back.Models
         public string Cccd { get; set; }
         public DateTime Ngaysinh { get; set; }
         public string Chucvu { get; set; }
+        public string Image { get; set; }
 
         [JsonIgnore]
         public virtual ICollection<Hoadon> Hoadons { get; set; }

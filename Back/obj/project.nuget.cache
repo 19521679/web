@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "lHatAUdV04Bd8nBTTyJuKP7kMpLv7eRFmmwgED1vP7zeFimUnjaOxa+4MKtE6h6d0lIaj2a3l8PN23IT6aC/9w==",
+  "dgSpecHash": "u6+frOoNwWxeNSWqvLKDGekqwcVg/pSApokHz8gsakL3PWk/ETcL9GYyL0i2vyhfCsC0fUptgF/zkYJR1mrvFA==",
   "success": true,
   "projectFilePath": "/Users/khanhle/Documents/GitHub/web/Back/Back.csproj",
   "expectedPackageFiles": [
@@ -79,6 +79,7 @@
     "/Users/khanhle/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512",
     "/Users/khanhle/.nuget/packages/runtime.native.system/4.3.0/runtime.native.system.4.3.0.nupkg.sha512",
     "/Users/khanhle/.nuget/packages/runtime.native.system.data.sqlclient.sni/4.7.0/runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
+    "/Users/khanhle/.nuget/packages/runtime.osx.10.10-x64.corecompat.system.drawing/5.8.64/runtime.osx.10.10-x64.corecompat.system.drawing.5.8.64.nupkg.sha512",
     "/Users/khanhle/.nuget/packages/runtime.win-arm64.runtime.native.system.data.sqlclient.sni/4.4.0/runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "/Users/khanhle/.nuget/packages/runtime.win-x64.runtime.native.system.data.sqlclient.sni/4.4.0/runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "/Users/khanhle/.nuget/packages/runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0/runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

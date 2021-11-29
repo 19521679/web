@@ -18,6 +18,10 @@ namespace Back.Models
         public int Masanpham { get; set; }
         public DateTime Ngaysanxuat { get; set; }
         public string Tinhtrang { get; set; }
+        public string Mausac { get; set; }
+        public string Dungluong { get; set; }
+        public float Giamoi { get; set; }
+        public string Image { get; set; }
 
         public virtual Sanpham MasanphamNavigation { get; set; }
         [JsonIgnore]

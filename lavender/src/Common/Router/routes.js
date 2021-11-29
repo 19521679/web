@@ -14,13 +14,15 @@ import ProductDashboard from "../../Components/Admin/ProductDashboard";
 import CustomerDashboard from "../../Components/Admin/CustomerDashboard";
 import BillingDashboard from "../../Components/Admin/BillingDashboard";
 import StaffDashboard from "../../Components/Admin/StaffDashboard";
+import StaffAccountDashboard from "../../Components/Admin/StaffAccountDashboard";
 import SuplierDashboard from "../../Components/Admin/SuplierDashboard";
+import PromotionDashboard from "../../Components/Admin/PromotionDashboard";
+import CustomerAccountDashboard from "../../Components/Admin/CustomerAccountDashboard"
+import ProductTypeDashboard from "../../Components/Admin/ProductTypeDashboard"
+import GuaranteeDashboard from "../../Components/Admin/GuaranteeDashboard"
+import TrademarkDashboard from "../../Components/Admin/TrademarkDashboard"
+
 import LMember from "../../Components/Accounts/LMember.js";
-import ThongTinTaiKhoan from "../../Components/Accounts/ThongTinTaiKhoan";
-import ThongBaoCuaToi from "../../Components/Accounts/ThongBaoCuaToi";
-import QuanLyDonHang from "../../Components/Accounts/QuanLyDonHang";
-import SoDiaChi from "../../Components/Accounts/SoDiaChi";
-import SanPhamYeuThich from "../../Components/Accounts/SanPhamYeuThich";
 
 const routes = [
   {
@@ -30,13 +32,18 @@ const routes = [
   },
   {
     path: "/:loai/:hang/:dong/:sanpham",
-    exact: false,
+    exact: true,
     main: ({ match }) => <Product match={match}></Product>,
   },
   {
+    path: "/mobile/:trademark",
+    exact: false,
+    main: ({match}) => <Mobile match={match} ></Mobile>,
+  },
+  {
     path: "/mobile",
-    exact: true,
-    main: () => <Mobile></Mobile>,
+    exact: false,
+    main: () => <Mobile ></Mobile>,
   },
 
   {
@@ -110,29 +117,34 @@ const routes = [
     main: () => <SuplierDashboard></SuplierDashboard>
   },
   {
-    path: "/lmember/thongtintaikhoan",
+    path: "/admin/staffaccount",
     exact: true,
-    main: () => <ThongTinTaiKhoan></ThongTinTaiKhoan>
+    main: () => <StaffAccountDashboard></StaffAccountDashboard>
   },
   {
-    path: "/lmember/quanlydonhang",
+    path: "/admin/promotion",
     exact: true,
-    main: () => <QuanLyDonHang></QuanLyDonHang>
+    main: () => <PromotionDashboard></PromotionDashboard>
   },
   {
-    path: "/lmember/thongbaocuatoi",
+    path: "/admin/customeraccount",
     exact: true,
-    main: () => <ThongBaoCuaToi></ThongBaoCuaToi>
+    main: () => <CustomerAccountDashboard></CustomerAccountDashboard>
   },
   {
-    path: "/lmember/sodiachi",
+    path: "/admin/producttype",
     exact: true,
-    main: () => <SoDiaChi></SoDiaChi>
+    main: () => <ProductTypeDashboard></ProductTypeDashboard>
   },
   {
-    path: "/lmember/sanphamyeuthich",
+    path: "/admin/guarantee",
     exact: true,
-    main: () => <SanPhamYeuThich></SanPhamYeuThich>
+    main: () => <GuaranteeDashboard></GuaranteeDashboard>
+  },
+  {
+    path: "/admin/trademark",
+    exact: true,
+    main: () => <TrademarkDashboard></TrademarkDashboard>
   },
   {
     path: "/lmember",

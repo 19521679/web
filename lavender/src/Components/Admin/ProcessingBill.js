@@ -7,7 +7,7 @@ export default class ProcessingBill extends Component {
   async componentDidMount() {
     let product=  undefined;
     let customer=   undefined;
-    await productApi.findProductById(this.props.bill.sohoadon)
+    await productApi.findProductByBillId(this.props.bill.sohoadon)
     .then((success) => {
       product= success.data.value;
     })

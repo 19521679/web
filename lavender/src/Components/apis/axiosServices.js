@@ -18,8 +18,8 @@ class AxiosServices {
   getImage(url) {
     return this.instance.get(url, { responseType: "blob" });
   }
-  post(url, data) {
-    return this.instance.post(url, data);
+  post(url, data, config) {
+    return this.instance.post(url, data, config);
   }
   put(url, data) {
     return this.instance.put(url, data);

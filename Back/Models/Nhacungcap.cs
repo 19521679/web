@@ -18,6 +18,7 @@ namespace Back.Models
         public string Email { get; set; }
         public string Sodienthoai { get; set; }
         public string Diachi { get; set; }
+        public string Image { get; set; }
 
         [JsonIgnore]
         public virtual ICollection<Phieunhapsanpham> Phieunhapsanphams { get; set; }

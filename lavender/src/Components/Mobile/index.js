@@ -6,29 +6,30 @@ import ProductItem from "../Product/ProductItem.js";
 import * as mobileApi from "../apis/mobile";
 
 export default class index extends Component {
-  state = { sapxep: "", data: [] };
+  state = { hang: "", data: [] };
 
   renderList() {
-    var result = [];
-    for (var i = 0; i < this.state.data.length; i++) {
-      result.push(<ProductItem product={this.state.data[i]}></ProductItem>);
-    }
+    var result = null;
+    result= this.state.data.map((value, key)=>{
+      return (<ProductItem product={value} key={key}></ProductItem>);
+    });
+
     return result;
   }
 
-  componentDidMount() {
-    const { firm } = this.props;
-    if (firm != null) {
-      this.setState({ sapxep: this.props.firm });
-    }
-    mobileApi
+  async componentDidMount() {
+    console.log(this.props.match);
+    let hang = this.props.match!==undefined&& this.props.match.params.trademark;
+    let data = null;
+    await mobileApi
       .mobile()
       .then((success) => {
-        this.setState({ data: success.data.$values });
+        data=success.data.value.$values ;
       })
       .catch((error) => {
         console.log(error);
       });
+      this.setState({ data: data, hang: hang });
   }
 
   render() {
@@ -41,7 +42,7 @@ export default class index extends Component {
                 <Carousel.Item>
                   <img
                     className="d-block w-100"
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbEAAAB0CAMAAAA8XPwwAAAAS1BMVEWEr+A3U300UHqHs+RUdaAvSnSItOWDrt9NbZl5otJAXolymcgzTnhZe6dHZpFvlcQ7WINjh7R1nc1+qNhLa5ZRcp0rRW8+XIZojrzmybfAAAAB3ElEQVR4nO3cjU7iQBiGUTqDyk8BQdz1/q90i7gJNCItu8nMl55zBZM8mbfVpMxmAAAAAAAAAAAAADwklz4Ao+TluvQRGCEvN02zXb+UPgfD5LfNa9s0KS3WpjGA5+UmpeZTetruSh+HO057+NXrs5ltrNx5Dy+ldNzZxkpd7OFVs9Y2Vqm3h9f3bLt7cdEq0+3hjV5/t7H0CblwYw/72+ia1WI5v7WHtrFC3fPrpz20jZUZsIf9bSx95Gkbtof9ZraxlOF7eNWs20b/Bykh71N7v8+Ne1b68JOU3x8M1nkqffhJyvMHJlGxghSLRrFoFItGsWgUi0axaBSLRrFoFItGsWgUi0axaBSLRrFoFItGsWgUi0axaBSLRrFoFItGsWgUi0axaBSLRrFoFItGsWgUi+Zfvkb6Vfrw03Q4jv2k9kta7UuffZrybH1sRzdL6XX/5kPoUp7XizE/NXD6oLa7X3oVdViM2Maul4/Wyxu6jam1h5XIhwHbeNpDP+RRj8P7nW1sVx/2sC4/vYOk9Nse1qfbxu+fZ/awVvnbbUz2sGLd39S9d/2UVh/2sGpX22gPI+i2cX5+BzndL3sYwfl5Zg8jyflw7O6XXoGIBQAAAAAAAAAAAADAf/EHPD8V5l4U5wMAAAAASUVORK5CYII="
+                    src="https://cdn.cellphones.com.vn/media/resized//ltsoft/promotioncategory/11t-pro-595x100_1_.png"
                     alt="First slide"
                   />
                   <Carousel.Caption></Carousel.Caption>
@@ -49,7 +50,7 @@ export default class index extends Component {
                 <Carousel.Item>
                   <img
                     className="d-block w-100"
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbEAAAB0CAMAAAA8XPwwAAAAS1BMVEWEr+A3U300UHqHs+RUdaAvSnSItOWDrt9NbZl5otJAXolymcgzTnhZe6dHZpFvlcQ7WINjh7R1nc1+qNhLa5ZRcp0rRW8+XIZojrzmybfAAAAB3ElEQVR4nO3cjU7iQBiGUTqDyk8BQdz1/q90i7gJNCItu8nMl55zBZM8mbfVpMxmAAAAAAAAAAAAADwklz4Ao+TluvQRGCEvN02zXb+UPgfD5LfNa9s0KS3WpjGA5+UmpeZTetruSh+HO057+NXrs5ltrNx5Dy+ldNzZxkpd7OFVs9Y2Vqm3h9f3bLt7cdEq0+3hjV5/t7H0CblwYw/72+ia1WI5v7WHtrFC3fPrpz20jZUZsIf9bSx95Gkbtof9ZraxlOF7eNWs20b/Bykh71N7v8+Ne1b68JOU3x8M1nkqffhJyvMHJlGxghSLRrFoFItGsWgUi0axaBSLRrFoFItGsWgUi0axaBSLRrFoFItGsWgUi0axaBSLRrFoFItGsWgUi0axaBSLRrFoFItGsWgUi+Zfvkb6Vfrw03Q4jv2k9kta7UuffZrybH1sRzdL6XX/5kPoUp7XizE/NXD6oLa7X3oVdViM2Maul4/Wyxu6jam1h5XIhwHbeNpDP+RRj8P7nW1sVx/2sC4/vYOk9Nse1qfbxu+fZ/awVvnbbUz2sGLd39S9d/2UVh/2sGpX22gPI+i2cX5+BzndL3sYwfl5Zg8jyflw7O6XXoGIBQAAAAAAAAAAAADAf/EHPD8V5l4U5wMAAAAASUVORK5CYII="
+                    src="https://cdn.cellphones.com.vn/media/resized//ltsoft/promotioncategory/ip13-xx-595x100_9_.png"
                     alt="Second slide"
                   />
                   <Carousel.Caption></Carousel.Caption>
@@ -57,7 +58,7 @@ export default class index extends Component {
                 <Carousel.Item>
                   <img
                     className="d-block w-100"
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbEAAAB0CAMAAAA8XPwwAAAAS1BMVEWEr+A3U300UHqHs+RUdaAvSnSItOWDrt9NbZl5otJAXolymcgzTnhZe6dHZpFvlcQ7WINjh7R1nc1+qNhLa5ZRcp0rRW8+XIZojrzmybfAAAAB3ElEQVR4nO3cjU7iQBiGUTqDyk8BQdz1/q90i7gJNCItu8nMl55zBZM8mbfVpMxmAAAAAAAAAAAAADwklz4Ao+TluvQRGCEvN02zXb+UPgfD5LfNa9s0KS3WpjGA5+UmpeZTetruSh+HO057+NXrs5ltrNx5Dy+ldNzZxkpd7OFVs9Y2Vqm3h9f3bLt7cdEq0+3hjV5/t7H0CblwYw/72+ia1WI5v7WHtrFC3fPrpz20jZUZsIf9bSx95Gkbtof9ZraxlOF7eNWs20b/Bykh71N7v8+Ne1b68JOU3x8M1nkqffhJyvMHJlGxghSLRrFoFItGsWgUi0axaBSLRrFoFItGsWgUi0axaBSLRrFoFItGsWgUi0axaBSLRrFoFItGsWgUi0axaBSLRrFoFItGsWgUi+Zfvkb6Vfrw03Q4jv2k9kta7UuffZrybH1sRzdL6XX/5kPoUp7XizE/NXD6oLa7X3oVdViM2Maul4/Wyxu6jam1h5XIhwHbeNpDP+RRj8P7nW1sVx/2sC4/vYOk9Nse1qfbxu+fZ/awVvnbbUz2sGLd39S9d/2UVh/2sGpX22gPI+i2cX5+BzndL3sYwfl5Zg8jyflw7O6XXoGIBQAAAAAAAAAAAADAf/EHPD8V5l4U5wMAAAAASUVORK5CYII="
+                    src="https://cdn.cellphones.com.vn/media/resized//ltsoft/promotioncategory/zs-595-100-max.png"
                     alt="Third slide"
                   />
                   <Carousel.Caption></Carousel.Caption>
@@ -70,7 +71,7 @@ export default class index extends Component {
                 <Carousel.Item>
                   <img
                     className="d-block w-100"
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbEAAAB0CAMAAAA8XPwwAAAAS1BMVEWEr+A3U300UHqHs+RUdaAvSnSItOWDrt9NbZl5otJAXolymcgzTnhZe6dHZpFvlcQ7WINjh7R1nc1+qNhLa5ZRcp0rRW8+XIZojrzmybfAAAAB3ElEQVR4nO3cjU7iQBiGUTqDyk8BQdz1/q90i7gJNCItu8nMl55zBZM8mbfVpMxmAAAAAAAAAAAAADwklz4Ao+TluvQRGCEvN02zXb+UPgfD5LfNa9s0KS3WpjGA5+UmpeZTetruSh+HO057+NXrs5ltrNx5Dy+ldNzZxkpd7OFVs9Y2Vqm3h9f3bLt7cdEq0+3hjV5/t7H0CblwYw/72+ia1WI5v7WHtrFC3fPrpz20jZUZsIf9bSx95Gkbtof9ZraxlOF7eNWs20b/Bykh71N7v8+Ne1b68JOU3x8M1nkqffhJyvMHJlGxghSLRrFoFItGsWgUi0axaBSLRrFoFItGsWgUi0axaBSLRrFoFItGsWgUi0axaBSLRrFoFItGsWgUi0axaBSLRrFoFItGsWgUi+Zfvkb6Vfrw03Q4jv2k9kta7UuffZrybH1sRzdL6XX/5kPoUp7XizE/NXD6oLa7X3oVdViM2Maul4/Wyxu6jam1h5XIhwHbeNpDP+RRj8P7nW1sVx/2sC4/vYOk9Nse1qfbxu+fZ/awVvnbbUz2sGLd39S9d/2UVh/2sGpX22gPI+i2cX5+BzndL3sYwfl5Zg8jyflw7O6XXoGIBQAAAAAAAAAAAADAf/EHPD8V5l4U5wMAAAAASUVORK5CYII="
+                    src="https://cdn.cellphones.com.vn/media/resized//ltsoft/promotioncategory/oppo-595-100-max_1_a-a.png"
                     alt="First slide"
                   />
                   <Carousel.Caption></Carousel.Caption>
@@ -78,7 +79,7 @@ export default class index extends Component {
                 <Carousel.Item>
                   <img
                     className="d-block w-100"
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbEAAAB0CAMAAAA8XPwwAAAAS1BMVEWEr+A3U300UHqHs+RUdaAvSnSItOWDrt9NbZl5otJAXolymcgzTnhZe6dHZpFvlcQ7WINjh7R1nc1+qNhLa5ZRcp0rRW8+XIZojrzmybfAAAAB3ElEQVR4nO3cjU7iQBiGUTqDyk8BQdz1/q90i7gJNCItu8nMl55zBZM8mbfVpMxmAAAAAAAAAAAAADwklz4Ao+TluvQRGCEvN02zXb+UPgfD5LfNa9s0KS3WpjGA5+UmpeZTetruSh+HO057+NXrs5ltrNx5Dy+ldNzZxkpd7OFVs9Y2Vqm3h9f3bLt7cdEq0+3hjV5/t7H0CblwYw/72+ia1WI5v7WHtrFC3fPrpz20jZUZsIf9bSx95Gkbtof9ZraxlOF7eNWs20b/Bykh71N7v8+Ne1b68JOU3x8M1nkqffhJyvMHJlGxghSLRrFoFItGsWgUi0axaBSLRrFoFItGsWgUi0axaBSLRrFoFItGsWgUi0axaBSLRrFoFItGsWgUi0axaBSLRrFoFItGsWgUi+Zfvkb6Vfrw03Q4jv2k9kta7UuffZrybH1sRzdL6XX/5kPoUp7XizE/NXD6oLa7X3oVdViM2Maul4/Wyxu6jam1h5XIhwHbeNpDP+RRj8P7nW1sVx/2sC4/vYOk9Nse1qfbxu+fZ/awVvnbbUz2sGLd39S9d/2UVh/2sGpX22gPI+i2cX5+BzndL3sYwfl5Zg8jyflw7O6XXoGIBQAAAAAAAAAAAADAf/EHPD8V5l4U5wMAAAAASUVORK5CYII="
+                    src="https://cdn.cellphones.com.vn/media/resized//ltsoft/promotioncategory/sw-595-100-max.png"
                     alt="Second slide"
                   />
                   <Carousel.Caption></Carousel.Caption>
@@ -86,7 +87,7 @@ export default class index extends Component {
                 <Carousel.Item>
                   <img
                     className="d-block w-100"
-                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbEAAAB0CAMAAAA8XPwwAAAAS1BMVEWEr+A3U300UHqHs+RUdaAvSnSItOWDrt9NbZl5otJAXolymcgzTnhZe6dHZpFvlcQ7WINjh7R1nc1+qNhLa5ZRcp0rRW8+XIZojrzmybfAAAAB3ElEQVR4nO3cjU7iQBiGUTqDyk8BQdz1/q90i7gJNCItu8nMl55zBZM8mbfVpMxmAAAAAAAAAAAAADwklz4Ao+TluvQRGCEvN02zXb+UPgfD5LfNa9s0KS3WpjGA5+UmpeZTetruSh+HO057+NXrs5ltrNx5Dy+ldNzZxkpd7OFVs9Y2Vqm3h9f3bLt7cdEq0+3hjV5/t7H0CblwYw/72+ia1WI5v7WHtrFC3fPrpz20jZUZsIf9bSx95Gkbtof9ZraxlOF7eNWs20b/Bykh71N7v8+Ne1b68JOU3x8M1nkqffhJyvMHJlGxghSLRrFoFItGsWgUi0axaBSLRrFoFItGsWgUi0axaBSLRrFoFItGsWgUi0axaBSLRrFoFItGsWgUi0axaBSLRrFoFItGsWgUi+Zfvkb6Vfrw03Q4jv2k9kta7UuffZrybH1sRzdL6XX/5kPoUp7XizE/NXD6oLa7X3oVdViM2Maul4/Wyxu6jam1h5XIhwHbeNpDP+RRj8P7nW1sVx/2sC4/vYOk9Nse1qfbxu+fZ/awVvnbbUz2sGLd39S9d/2UVh/2sGpX22gPI+i2cX5+BzndL3sYwfl5Zg8jyflw7O6XXoGIBQAAAAAAAAAAAADAf/EHPD8V5l4U5wMAAAAASUVORK5CYII="
+                    src="https://cdn.cellphones.com.vn/media/resized//ltsoft/promotioncategory/apple-2021-590-100-max.png"
                     alt="Third slide"
                   />
                   <Carousel.Caption></Carousel.Caption>
@@ -98,7 +99,7 @@ export default class index extends Component {
           {this.state.sapxep}
           <div className="row">
             <div className="mt-3">
-              <Trademark type="mobile"></Trademark>
+              <Trademark type={"mobile"} hang = {this.state.hang}></Trademark>
             </div>
           </div>
           <div className="row">
@@ -110,7 +111,7 @@ export default class index extends Component {
 
           <div className="row">
             <div className="block-filter">
-              <div className="">
+              {/* <div className="">
                 <p className="box-title">Chọn theo tiêu chí</p>
               </div>
               <div className="list-filter">
@@ -129,7 +130,7 @@ export default class index extends Component {
                   </svg>
                   Bộ lọc
                 </div>
-              </div>
+              </div> */}
 
               <div className="">
                 <p className="box-title">Sắp xếp theo</p>

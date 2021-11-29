@@ -16,39 +16,7 @@ const menus = [
   {
     name: "Điện thoại",
     to: "/mobile",
-    exact: true,
-    list: [
-      {
-        name: "Iphone",
-        to: "/iphone",
-        exact: false,
-        list: [],
-      },
-      {
-        name: "Samsung",
-        to: "/samsung",
-        exact: false,
-        list: [],
-      },
-      {
-        name: "Oppo",
-        to: "/oppo",
-        exact: false,
-        list: [],
-      },
-      {
-        name: "Vivo",
-        to: "/vivo",
-        exact: false,
-        list: [],
-      },
-      {
-        name: "Xiaomi",
-        to: "/xiaomi",
-        exact: false,
-        list: [],
-      },
-    ],
+    exact: true, 
   },
   {
     name: "Máy tính",
@@ -96,76 +64,6 @@ var MenuLink = ({ lable, to, activeOnlyWhenExact }) => {
   );
 };
 
-// var ItemLink = ( {lable, to} ) => {
-//   return (
-//     <Route
-//       path={to}
-//       children={({ match }) => {
-//         var active = match ? "active" : "";
-//         return (
-//           <li>
-//             <Link className="nav-link scrollto" className={active} to={to}>
-//               {lable}
-//             </Link>
-//           </li>
-//         );
-//       }}
-//     ></Route>
-//   );
-// };
-
-// var showItemDown = (lable, to, match, list) => {
-//   var result = null;
-//   var active = match ? "active" : "";
-//   result = (
-//     <li className="dropdown">
-//       <Link className={active} to={to}>
-//         <span>{lable}</span> <i className="bi bi-chevron-down" />
-//       </Link>
-//       <ul>
-//         {list.map((value, key) => {
-//           return (
-//             <ItemLink
-//               key={key}
-//               lable={value.name}
-//               to={to + value.to}
-//               match={match}
-//               list={value.list}
-//             ></ItemLink>
-//           );
-//         })}
-//       </ul>
-//     </li>
-//   );
-//   return result;
-// };
-
-// var showItemRight = (lable, to, match, list) => {
-//   var result = null;
-//   var active = match ? "active" : "";
-//   result = (
-//     <li className="dropdown">
-//       <Link className={active} to={to}>
-//         <span>{lable}</span> <i className="bi bi-chevron-right" />
-//       </Link>
-//       <ul>
-//         {list.map((value, key) => {
-//           return (
-//             <ItemLink
-//               key={key}
-//               lable={value.name}
-//               to={to + value.to}
-//               match={match}
-//               list={value.list}
-//             ></ItemLink>
-//           );
-//         })}
-//       </ul>
-//     </li>
-//   );
-//   return result;
-// };
-
 var showMenu = (temps) => {
   var result = null;
   result = temps.map((value, key) => {
@@ -199,7 +97,7 @@ class Header extends Component {
       <header id="header" className="fixed-top">
         <div className="container d-flex align-items-center justify-content-between">
           <img alt="logo-img" className="logo-img" src={logo}></img>
-          <h1 className="logo">
+          <h1 className="ilogo">
             <Link to="/">Lavender</Link>
           </h1>
           <div id="navbar" className="navbar">
@@ -217,7 +115,8 @@ class Header extends Component {
                   >
                     <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
                   </svg>
-                 Giỏ hàng
+         
+                        Giỏ hàng
                 </Link>
               </li>
               {hasLogined ? (

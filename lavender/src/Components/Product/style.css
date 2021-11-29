@@ -176,7 +176,7 @@ select option{
 #configurable_swatch_color li {
   display: inline-block;
 }
-.box-product-option .box-content .list-colors .item-color.selected{
+.box-product-option .box-content .list-colors .item-color.selected, .box-linked .list-linked .item-linked.selected{
   border: 1px solid #D70018!important;
   outline: none;
 }
@@ -640,4 +640,55 @@ footer p a{
 footer p a:hover {
   color: #9f26aa;
   text-decoration: none;
+}
+
+.swatch-link {
+  cursor:pointer;
+}
+.product-price .old-price{
+  display: inline-block;
+  margin: 0 0 5px 10px !important;
+  float: left;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  text-decoration: line-through;
+  color: #707070;
+}
+.iVoRpG {
+  display: flex;
+  margin-top: 24px;
+  -webkit-box-align: center;
+  align-items: center;
+}
+.iBQIpk {
+  font-size: 15px;
+  line-height: 24px;
+  color: rgb(36, 36, 36);
+}
+.hUSuHV.left {
+  margin-left: 8px;
+}
+.hUSuHV {
+    width: 28px;
+    height: 28px;
+    margin-right: 8px;
+    cursor: pointer;
+}
+.hdEAcm {
+  width: 1px;
+  height: 20px;
+  background-color: rgb(242, 242, 242);
+  margin-left: 16px;
+  margin-right: 16px;
+}
+.kQruUZ {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+.iBQIpk {
+  font-size: 15px;
+  line-height: 24px;
+  color: rgb(36, 36, 36);
 }

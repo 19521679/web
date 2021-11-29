@@ -4,17 +4,10 @@
 
 @if $enable-grid-classes {
   // Single container class with breakpoint max-widths
-  .container,
-  // 100% wide container at all breakpoints
-  .container-fluid {
-    @include make-container();
-  }
 
   // Responsive containers that are 100% wide until a breakpoint
   @each $breakpoint, $container-max-width in $container-max-widths {
-    .container-#{$breakpoint} {
-      @extend .container-fluid;
-    }
+
 
     @include media-breakpoint-up($breakpoint, $grid-breakpoints) {
       %responsive-container-#{$breakpoint} {

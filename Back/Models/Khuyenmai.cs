@@ -20,6 +20,7 @@ namespace Back.Models
         public DateTime Ngayketthuc { get; set; }
         public string Dieukien { get; set; }
 
+        public virtual ICollection<Khuyenmaicuatoi> Khuyenmaicuatois { get; set; }
         [JsonIgnore]
         public virtual ICollection<Hoadon> Hoadons { get; set; }
         public override string ToString()

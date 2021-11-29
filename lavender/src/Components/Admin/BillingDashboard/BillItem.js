@@ -10,7 +10,7 @@ export default class BillItem extends Component {
     let product = undefined;
     let customer = undefined;
     await productApi
-      .findProductById(this.props.bill.sohoadon)
+      .findProductByBillId(this.props.bill.sohoadon)
       .then((success) => {
         product = success.data.value;
       })
@@ -40,20 +40,24 @@ export default class BillItem extends Component {
             return (
               <AddBill
                 handleClose={this.hideModal.bind(this)}
-                handleSave={this.hideModal.bind(this)}
+                handleSave={(() => {
+                  this.hideModal.bind(this)();
+                  this.props.handleSave();
+                }).bind(this)}
                 bill={this.props.bill}
               ></AddBill>
             );
-            else
-              if (this.state.modal === 2)
+          else if (this.state.modal === 2)
             return (
               <DeleteBill
                 handleClose={this.hideModal.bind(this)}
-                handleSave={this.hideModal.bind(this)}
+                handleSave={(() => {
+                  this.hideModal.bind(this)();
+                  this.props.handleSave();
+                }).bind(this)}
                 bill={this.props.bill}
               ></DeleteBill>
             );
-          
         }).bind(this)()}
         <li className="list-group-item border-0 d-flex p-4 bg-gray-100 border-radius-lg">
           <div className="d-flex flex-column">
@@ -110,17 +114,20 @@ export default class BillItem extends Component {
             </span>
           </div>
           <div className="ms-auto text-end">
-            <a
+            <div
+              className="btn btn-link text-dark px-3 mb-0"
+              onClick={() => this.showModal(1)}
+            >
+              <i class="bi bi-pencil-square"></i>
+              {"  "}Sửa
+            </div>
+            <div
               className="btn btn-link text-danger text-gradient px-3 mb-0"
               onClick={() => this.showModal(2)}
             >
               <i class="bi bi-trash"></i>
               {"  "}Xoá
-            </a>
-            <a className="btn btn-link text-dark px-3 mb-0" onClick={() => this.showModal(1)}>
-              <i class="bi bi-pencil-square"></i>
-              {"  "}Sửa
-            </a>
+            </div>
           </div>
         </li>
       </>

@@ -123,3 +123,74 @@ cGnbJp .qty-decrease img,
 .glclPp .intended__delete img {
   width: 17px;
 }
+.hNjxWW .checkbox-fake::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 2px;
+  top: 3px;
+  width: 12px;
+  height: 6px;
+  border-left: 2px solid rgb(255, 255, 255);
+  border-bottom: 2px solid rgb(255, 255, 255);
+  transform: scale(0) rotate(
+-45deg);
+  transition: transform 0.3s ease 0s;
+}
+.uUhc_B {
+  padding: 0 12px 0 20px;
+  display: flex;
+  flex-direction: row-reverse;
+  min-width: 58px;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.stardust-checkbox {
+  font-family: -apple-system,HelveticaNeue-Light,Helvetica Neue Light,Helvetica Neue,Helvetica,Roboto,Droid Sans,Arial,sans-serif;
+  font-weight: 300;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  cursor: default;
+  position: relative;
+  color: rgba(0,0,0,.54);
+  max-width: 400px;
+}
+.stardust-checkbox__input {
+  opacity: 0;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+.stardust-checkbox__box {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: relative;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  border-radius: 2px;
+  border: 1px solid rgba(0,0,0,.14);
+  text-align: center;
+  box-shadow: inset 0 2px 0 0 rgb(0 0 0 / 2%);
+  margin-right: 8px;
+}
+
+.stardust-checkbox--checked .stardust-checkbox__box {
+  background: #ee4d2d;
+  border-color: #ee4d2d;
+
+}
+
+input[type="checkbox" i] {
+  background-color: initial;
+  cursor: default;
+  -webkit-appearance: auto;
+  appearance: auto;
+  box-sizing: border-box;
+  margin-bottom: 5px;
+  padding: initial;
+  border: initial;
+}

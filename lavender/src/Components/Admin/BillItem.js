@@ -10,7 +10,7 @@ export default class BillItem extends Component {
     let product = null;
     let customer = null;
     let ship  = null;
-    await productApi.findProductById(this.props.bill.sohoadon)
+    await productApi.findProductByBillId(this.props.bill.sohoadon)
     .then((success)=>{
       if (success.status===200) product=success.data.value;
     })
@@ -25,9 +25,12 @@ export default class BillItem extends Component {
 
     await shipApi.findShipByBillId(this.props.bill.sohoadon)
     .then((success)=>{
+      console.log(success.data.value);
       if (success.status===200) ship=success.data.value;
     })
-    .catch((error) => {});
+    .catch((error) => {
+      console.error(error);
+    });
     this.setState({product:product, customer:customer, ship:ship});
    
   }

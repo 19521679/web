@@ -307,10 +307,6 @@ blockquote {
   margin: 0 0 1rem;
 }
 
-b,
-strong {
-  font-weight: 700;
-}
 
 small,
 .small {
@@ -2872,18 +2868,7 @@ fieldset:disabled .btn {
   padding-bottom: 0.5rem;
   padding-left: 1rem;
 }
-.navbar > .container,
-.navbar > .container-fluid,
-.navbar > .container-sm,
-.navbar > .container-md,
-.navbar > .container-lg,
-.navbar > .container-xl,
-.navbar > .container-xxl {
-  display: flex;
-  flex-wrap: inherit;
-  align-items: center;
-  justify-content: space-between;
-}
+
 
 .navbar-brand {
   padding-top: 0.40625rem;
@@ -7865,7 +7850,7 @@ fieldset:disabled .btn {
 }
 
 .text-secondary {
-  color: #7b809a !important;
+  color: black !important;
 }
 
 .text-success {
