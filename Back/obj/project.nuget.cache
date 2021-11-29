@@ -1,6 +1,7 @@
 {
   "version": 2,
 <<<<<<< HEAD
+<<<<<<< HEAD
   "dgSpecHash": "u6+frOoNwWxeNSWqvLKDGekqwcVg/pSApokHz8gsakL3PWk/ETcL9GYyL0i2vyhfCsC0fUptgF/zkYJR1mrvFA==",
   "success": true,
   "projectFilePath": "/Users/khanhle/Documents/GitHub/web/Back/Back.csproj",
@@ -161,6 +162,12 @@
   "success": true,
   "projectFilePath": "C:\\Users\\huy\\Documents\\UIT\\PROJECT\\web\\Back\\Back.csproj",
   "expectedPackageFiles": [
+=======
+  "dgSpecHash": "jMjn+U777tIIfPP75lmXpGMIbHN3ulhzEhmGhsXXS4UuCAJ7aO73ciDHtlxdo33gCHyBqz+KN9A1Y4zR5e/8iQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\huy\\Documents\\UIT\\PROJECT\\web\\Back\\Back.csproj",
+  "expectedPackageFiles": [
+>>>>>>> 8f346fa0b10fc74f6eda05d64d0100bd50617210
     "C:\\Users\\huy\\.nuget\\packages\\bouncycastle.netcore\\1.8.5\\bouncycastle.netcore.1.8.5.nupkg.sha512",
     "C:\\Users\\huy\\.nuget\\packages\\google.protobuf\\3.14.0\\google.protobuf.3.14.0.nupkg.sha512",
     "C:\\Users\\huy\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
@@ -311,6 +318,9 @@
     "C:\\Users\\huy\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\huy\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\huy\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
+<<<<<<< HEAD
+>>>>>>> 8f346fa0b10fc74f6eda05d64d0100bd50617210
+=======
 >>>>>>> 8f346fa0b10fc74f6eda05d64d0100bd50617210
   ],
   "logs": []

@@ -32,6 +32,9 @@ import SoDiaChi from "../../Components/Accounts/SoDiaChi";
 import SanPhamYeuThich from "../../Components/Accounts/SanPhamYeuThich";
 import Article from "../../Components/Article";
 import ArticleDetail from "../../Components/Article/ArticleDetail";
+<<<<<<< HEAD
+>>>>>>> 8f346fa0b10fc74f6eda05d64d0100bd50617210
+=======
 >>>>>>> 8f346fa0b10fc74f6eda05d64d0100bd50617210
 
 const routes = [

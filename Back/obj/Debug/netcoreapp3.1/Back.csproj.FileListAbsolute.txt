@@ -86,6 +86,7 @@
 /Users/khanhle/Documents/GitHub/framework_IS220.M11_6/Back/bin/Debug/netcoreapp3.1/runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.pdb
 /Users/khanhle/Documents/GitHub/framework_IS220.M11_6/Back/bin/Debug/netcoreapp3.1/runtimes/win/lib/netstandard2.0/System.Runtime.Caching.dll
 <<<<<<< HEAD
+<<<<<<< HEAD
 /Users/khanhle/Documents/GitHub/framework_IS220.M11_6/Back/bin/Debug/netcoreapp3.1/runtime.osx.10.10-x64.CoreCompat.System.Drawing.dll
 /Users/khanhle/Documents/GitHub/framework_IS220.M11_6/Back/bin/Debug/netcoreapp3.1/runtimes/osx-x64/native/libcairo.2.dylib
 /Users/khanhle/Documents/GitHub/framework_IS220.M11_6/Back/bin/Debug/netcoreapp3.1/runtimes/osx-x64/native/libfontconfig.1.dylib
@@ -202,6 +203,8 @@
 /Users/khanhle/Documents/GitHub/web/Back/obj/Debug/netcoreapp3.1/Back.pdb
 /Users/khanhle/Documents/GitHub/web/Back/obj/Debug/netcoreapp3.1/Back.genruntimeconfig.cache
 =======
+=======
+>>>>>>> 8f346fa0b10fc74f6eda05d64d0100bd50617210
 C:\Users\huy\Documents\UIT\PROJECT\web\Back\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\huy\Documents\UIT\PROJECT\web\Back\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\huy\Documents\UIT\PROJECT\web\Back\bin\Debug\netcoreapp3.1\Back.exe
@@ -292,4 +295,7 @@ C:\Users\huy\Documents\UIT\PROJECT\web\Back\obj\Debug\netcoreapp3.1\Back.csproj.
 C:\Users\huy\Documents\UIT\PROJECT\web\Back\obj\Debug\netcoreapp3.1\Back.dll
 C:\Users\huy\Documents\UIT\PROJECT\web\Back\obj\Debug\netcoreapp3.1\Back.pdb
 C:\Users\huy\Documents\UIT\PROJECT\web\Back\obj\Debug\netcoreapp3.1\Back.genruntimeconfig.cache
+<<<<<<< HEAD
+>>>>>>> 8f346fa0b10fc74f6eda05d64d0100bd50617210
+=======
 >>>>>>> 8f346fa0b10fc74f6eda05d64d0100bd50617210
