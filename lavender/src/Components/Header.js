@@ -42,6 +42,12 @@ const menus = [
     exact: false,
     list: [],
   },
+  {
+    name: "Bài viết",
+    to: "/article",
+    exact: false,
+    list: [],
+  },  
 ];
 
 var MenuLink = ({ lable, to, activeOnlyWhenExact }) => {

@@ -23,8 +23,28 @@ import GuaranteeDashboard from "../../Components/Admin/GuaranteeDashboard"
 import TrademarkDashboard from "../../Components/Admin/TrademarkDashboard"
 
 import LMember from "../../Components/Accounts/LMember.js";
+<<<<<<< HEAD
+=======
+import ThongTinTaiKhoan from "../../Components/Accounts/ThongTinTaiKhoan";
+import ThongBaoCuaToi from "../../Components/Accounts/ThongBaoCuaToi";
+import QuanLyDonHang from "../../Components/Accounts/QuanLyDonHang";
+import SoDiaChi from "../../Components/Accounts/SoDiaChi";
+import SanPhamYeuThich from "../../Components/Accounts/SanPhamYeuThich";
+import Article from "../../Components/Article";
+import ArticleDetail from "../../Components/Article/ArticleDetail";
+>>>>>>> 8f346fa0b10fc74f6eda05d64d0100bd50617210
 
 const routes = [
+  {
+    path: "/article",
+    exact: true,
+    main: () => <Article></Article>,
+  },
+  {
+    path: "/article/:mabaiviet",
+    exact: false,
+    main: ({match}) => <ArticleDetail match={match}></ArticleDetail>,
+  },
   {
     path: "/",
     exact: true,
@@ -61,6 +81,7 @@ const routes = [
     exact: false,
     main: () => <Blog></Blog>,
   },
+  
   {
     path: "/cart",
     exact: false,

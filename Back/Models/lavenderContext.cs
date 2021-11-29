@@ -16,7 +16,7 @@ namespace Back.Models
             : base(options)
         {
         }
-
+        public virtual DbSet<Baiviet> Baiviets { get; set; }
         public virtual DbSet<Baohanh> Baohanhs { get; set; }
         public virtual DbSet<Chitietgiohang> Chitietgiohang { get; set; }
         public virtual DbSet<Chitiethoadon> Chitiethoadon { get; set; }
@@ -42,6 +42,33 @@ namespace Back.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
+
+            modelBuilder.Entity<Baiviet>(entity =>
+            {
+               entity.HasKey(e => e.mabaiviet)
+                     .IsClustered(false);
+
+                entity.ToTable("BAIVIET");
+
+                entity.Property(e => e.mabaiviet).HasColumnName("MABAIVIET");
+
+
+                entity.Property(e => e.tieude)
+                    .HasColumnType("text")
+                    .HasColumnName("TIEUDE");
+
+                entity.Property(e => e.thumnail)
+                    .HasColumnType("text")
+                    .HasColumnName("THUMNAIL");
+
+                entity.Property(e => e.mota)
+                    .HasColumnType("text")
+                    .HasColumnName("MOTA");
+
+                entity.Property(e => e.noidung)
+                    .HasColumnType("text")
+                    .HasColumnName("NOIDUNG");
+            });
 
             modelBuilder.Entity<Baohanh>(entity =>
             {

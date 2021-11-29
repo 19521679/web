@@ -1,0 +1,108 @@
+/* .hovereffect {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -ms-transition: all .3s ease-in-out;
+    -o-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
+    zoom: 1;
+    filter: alpha(opacity=0);
+    opacity: 0.5;
+    background: -moz-linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.1) 50%);
+    background: -webkit-linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.1) 50%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.1) 50%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00000000', GradientType=1);
+} */
+
+.sidebar .widget-title {
+    display: block;
+    font-size: 18px;
+    margin: 0 0 2rem;
+    padding: 0;
+    line-height: 1;
+}
+.page-link {
+    background-color: #edeff2 !important;
+    border: 0 dashed #e2e2e2;
+    border-radius: 0!important;
+    color: #a3a5a8 !important;
+    display: block;
+    font-size: 14px;
+    line-height: 1;
+    margin-left: 6px;
+    padding: 0.8rem 0.8rem;
+    position: relative;
+    text-transform: capitalize;
+}
+
+.trend-videos h4 {
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.trend-videos h4 a {
+    color: #111111 !important;
+}
+
+.trend-videos hr.invis {
+    margin: 1rem 0;
+}
+
+
+.sidebar .widget-title {
+    display: block;
+    font-size: 18px;
+    margin: 0 0 2rem;
+    padding: 0;
+    line-height: 1;
+}
+
+.sidebar .widget {
+    position: relative;
+    display: block;
+    margin-bottom: 3rem;
+}
+
+.blog-list-widget .w-100 {
+    margin-bottom: 1rem;
+    display: block;
+}
+.sidebar .blog-list-widget .mb-1 {
+    font-size: 15px;
+}
+.blog-top {
+    margin-bottom: 2rem;
+}
+.pagination {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 20%;
+}
+.page-link {
+    background-color: #edeff2 !important;
+    border: 0 dashed #e2e2e2;
+    border-radius: 0;
+    color: #a3a5a8 !important;
+    display: block;
+    font-size: 14px;
+    line-height: 1;
+    margin-left: 6px;
+    padding: 0.8rem 0.8rem;
+    position: relative;
+    text-transform: capitalize;
+    border-radius: 0 !important;
+}
+
+a:hover{
+    color: rgb(66, 66, 66);
+}
