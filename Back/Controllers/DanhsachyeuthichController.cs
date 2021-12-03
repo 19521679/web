@@ -56,7 +56,7 @@ namespace Back.Controllers
             var favorites = await (from d in lavenderContext.Danhsachyeuthich
                                    where d.Masanpham == masanpham
                                    && d.Makhachhang == makhachhang
-                                   select d).FirstAsync();
+                                   select d).FirstOrDefaultAsync();
             Boolean liked = false;
             if (favorites != null) liked = true;
             return StatusCode(200, Json(new { liked = liked }));
@@ -68,7 +68,7 @@ namespace Back.Controllers
         {
             var favorite = new Danhsachyeuthich();
             favorite.Makhachhang = makhachhang;
-            favorite.Masanpham = makhachhang;
+            favorite.Masanpham = masanpham;
             await lavenderContext.AddAsync(favorite);
             await lavenderContext.SaveChangesAsync();
             return StatusCode(200);

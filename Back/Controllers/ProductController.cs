@@ -251,6 +251,36 @@ namespace Back.Controllers
                                      select s).ToListAsync();
             return StatusCode(200, Json(listproduct));
         }
+
+        [Route("/tim-sanpham")]
+        [HttpGet]
+        public async Task<IActionResult> FindProduct(string timkiem)
+        {
+            if (String.IsNullOrEmpty(timkiem))
+            {
+                var sanphamlist = await (from s in lavenderContext.Sanpham
+                                         select s).ToListAsync();
+                return StatusCode(200, Json(sanphamlist));
+            }
+            else
+            {
+                var sanphamlist = await (from s in lavenderContext.Sanpham
+                                         where s.Tensanpham.Contains(timkiem)
+                                         select s).ToListAsync();
+                return StatusCode(200, Json(sanphamlist));
+            }
+            
+        }
+
+        [Route("/muoi-sanpham-moinhat")]
+        [HttpGet]
+        public async Task<IActionResult> TenNewProduct()
+        {
+            var list = await (from x in lavenderContext.Sanpham
+                              orderby x.Thoidiemramat descending
+                              select x).ToListAsync();
+            return StatusCode(200, Json(list));
+        }
     }
 
 }

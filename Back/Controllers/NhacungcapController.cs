@@ -6,7 +6,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Back.Models.Account;
 using Back.Models;
 using Newtonsoft.Json;
 using Microsoft.EntityFrameworkCore;
@@ -22,58 +21,54 @@ namespace Back.Controllers
     // [EnableCors(origins: "*", headers: "accept,content-type,origin,x-my-header", methods: "*")]
     [ApiController]
 
-    public class NhanvienController : Controller
+    public class NhacungcapController : Controller
     {
-        private readonly ILogger<NhanvienController> _logger;
+        private readonly ILogger<NhacungcapController> _logger;
         private readonly IWebHostEnvironment _env;
 
         private readonly lavenderContext lavenderContext;
 
-        public NhanvienController(ILogger<NhanvienController> logger, IWebHostEnvironment env, lavenderContext lavenderContext)
+        public NhacungcapController(ILogger<NhacungcapController> logger, IWebHostEnvironment env, lavenderContext lavenderContext)
         {
             _logger = logger;
             _env = env;
             this.lavenderContext = lavenderContext;
         }
 
-        [Route("/tatca-nhanvien")]
+
+        [Route("/tatca-nhacungcap")]
         [HttpGet]
         public async Task<IActionResult> AllStaff()
         {
-            var nhanvienlist = await (from n in lavenderContext.Nhanvien
-                                      orderby n.Manhanvien ascending
+            var nhacungcaplist = await (from n in lavenderContext.Nhacungcap
+                                      orderby n.Manhacungcap ascending
                                       select n).ToListAsync();
-            return StatusCode(200, Json(nhanvienlist));
+            return StatusCode(200, Json(nhacungcaplist));
         }
 
-        [Route("/them-nhanvien")]
+        [Route("/them-nhacungcap")]
         [HttpPost]
-        public async Task<IActionResult> AddStaff([FromForm] string tennhanvien, [FromForm] string email,
-            [FromForm] string sodienthoai, [FromForm] string diachi, [FromForm] string ngayvaolam, [FromForm] IFormFile image,
-            [FromForm] string cccd, [FromForm] string ngaysinh, [FromForm] string chucvu)
+        public async Task<IActionResult> AddStaff([FromForm] string tennhacungcap, [FromForm] string email,
+            [FromForm] string sodienthoai, [FromForm] string diachi, [FromForm] IFormFile image)
         {
-            Nhanvien s = new Nhanvien();
-            s.Tennhanvien = tennhanvien;
+            Nhacungcap s = new Nhacungcap();
+            s.Tennhacungcap = tennhacungcap;
             s.Email = email;
             s.Sodienthoai = sodienthoai;
             s.Diachi = diachi;
-            s.Ngayvaolam = DateTime.Parse(ngayvaolam).ToLocalTime();
-            s.Cccd = cccd;
-            s.Ngaysinh = DateTime.Parse(ngaysinh).ToLocalTime();
-            s.Chucvu = chucvu;
-            s.Image = "/nhanvien";
+            s.Image = "/nhacungcap";
            
 
             await lavenderContext.AddAsync(s);
             await lavenderContext.SaveChangesAsync();
 
-            Nhanvien temp = await (from n in lavenderContext.Nhanvien
-                                   orderby n.Manhanvien descending
+            Nhacungcap temp = await (from n in lavenderContext.Nhacungcap
+                                     orderby n.Manhacungcap descending
                                    select n).FirstAsync();
 
             if (image == null || image.Length == 0) return StatusCode(200, Json(s));
 
-            string NewDir = _env.ContentRootPath + "/wwwroot/nhanvien" ;
+            string NewDir = _env.ContentRootPath + "/wwwroot/nhacungcap" ;
 
             if (!Directory.Exists(NewDir))
             {
@@ -86,30 +81,25 @@ namespace Back.Controllers
                 using (var img = Image.FromStream(memoryStream))
                 {
                     // TODO: ResizeImage(img, 100, 100);
-                    img.Save(_env.ContentRootPath + "/wwwroot/nhanvien/" + temp.Manhanvien + ".Jpeg", ImageFormat.Jpeg);
+                    img.Save(_env.ContentRootPath + "/wwwroot/nhacungcap/" + temp.Manhacungcap + ".Jpeg", ImageFormat.Jpeg);
                 }
             }
             return StatusCode(200, Json(s));
         }
 
-        [Route("/sua-nhanvien")]
+        [Route("/sua-nhacungcap")]
         [HttpPost]
-        public async Task<IActionResult> EditStaff([FromForm] int manhanvien, [FromForm] string tennhanvien, [FromForm] string email,
-       [FromForm] string sodienthoai, [FromForm] string diachi, [FromForm] string ngayvaolam, [FromForm] IFormFile image,
-       [FromForm] string cccd, [FromForm] string ngaysinh, [FromForm] string chucvu)
+        public async Task<IActionResult> EditStaff([FromForm] int manhacungcap, [FromForm] string tennhacungcap, [FromForm] string email,
+       [FromForm] string sodienthoai, [FromForm] string diachi, [FromForm] IFormFile image)
         {
-            Nhanvien s = await (from n in lavenderContext.Nhanvien
-                                where n.Manhanvien==manhanvien
+            Nhacungcap s = await (from n in lavenderContext.Nhacungcap
+                                  where n.Manhacungcap==manhacungcap
                                    select n).FirstAsync();
-            s.Tennhanvien = tennhanvien;
+            s.Tennhacungcap = tennhacungcap;
             s.Email = email;
             s.Sodienthoai = sodienthoai;
             s.Diachi = diachi;
-            s.Ngayvaolam = DateTime.Parse(ngayvaolam).ToLocalTime();
-            s.Cccd = cccd;
-            s.Ngaysinh = DateTime.Parse(ngaysinh).ToLocalTime();
-            s.Chucvu = chucvu;
-            s.Image = "/nhanvien";
+            s.Image = "/nhacungcap";
 
             await lavenderContext.SaveChangesAsync();
 
@@ -117,7 +107,7 @@ namespace Back.Controllers
 
             if (image == null || image.Length == 0) return StatusCode(200, Json(s));
 
-            string NewDir = _env.ContentRootPath + "/wwwroot/nhanvien";
+            string NewDir = _env.ContentRootPath + "/wwwroot/nhacungcap";
 
             if (!Directory.Exists(NewDir))
             {
@@ -130,20 +120,25 @@ namespace Back.Controllers
                 using (var img = Image.FromStream(memoryStream))
                 {
                     // TODO: ResizeImage(img, 100, 100);
-                    img.Save(_env.ContentRootPath + "/wwwroot/nhanvien/" + s.Manhanvien + ".Jpeg", ImageFormat.Jpeg);
+                    img.Save(_env.ContentRootPath + "/wwwroot/nhacungcap/" + s.Manhacungcap + ".Jpeg", ImageFormat.Jpeg);
                 }
             }
             return StatusCode(200, Json(s));
         }
 
-        [Route("/xoa-nhanvien")]
+        [Route("/xoa-nhacungcap")]
         [HttpDelete]
-        public async Task<IActionResult> DeleteStaff(int manhanvien)
+        public async Task<IActionResult> DeleteStaff(int manhacungcap)
         {
-            var nhanvien = await lavenderContext.Nhanvien.SingleAsync(x => x.Manhanvien == manhanvien);
-            lavenderContext.Remove(nhanvien);
+            var s = await lavenderContext.Nhacungcap.SingleAsync(x => x.Manhacungcap == manhacungcap);
+            lavenderContext.Remove(s);
+            string path = _env.ContentRootPath + "/wwwroot/nhacungcap/" + s.Manhacungcap + ".Jpeg";
+            if (System.IO.File.Exists(path))
+            {
+                System.IO.File.Delete(path);
+            }
             await lavenderContext.SaveChangesAsync();
-            return StatusCode(200, Json(manhanvien));
+            return StatusCode(200, Json(manhacungcap));
         }
     }
 

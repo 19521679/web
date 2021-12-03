@@ -201,6 +201,7 @@ section.cps-section
   flex-wrap: wrap;
   overflow-x: auto;
   overflow-y: hidden;
+
 }
 .brands .brand-body .brand-items .brch-row,
 .brands .brand-body .brand-items .brch-row-page {
@@ -233,6 +234,7 @@ section.cps-section
 }
 .brands .brand-body .brand-items .brch-row .brand-item img,
 .brands .brand-body .brand-items .brch-row-page .brand-item img {
+  height:65px;
   width: 100%;
   margin: 0 auto;
 }
@@ -245,4 +247,7 @@ section.cps-section
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
   box-shadow: rgba(60, 64, 67, 0.1) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+.promotion1 .promotion-carousel{
+  border-radius: 10px;
 }

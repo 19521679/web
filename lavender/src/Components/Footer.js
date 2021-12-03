@@ -22,24 +22,24 @@ export default class Footer extends Component {
                       <br />
                     </p>
                   </div>
-                  <div className="col-lg-2 col-md-6 footer-links">
-                    <h4>Useful Links</h4>
+                  <div className="col-lg-2 col-md-6 footer-links hotline">
+                    <h4>Hotline</h4>
                     <ul>
                       <li>
                         <i className="bx bx-chevron-right" />{" "}
-                        <a >Trang chủ</a>
+                        <a href="tel:0914630145" >Gọi mua hàng: 0914630145</a>
                       </li>
                       <li>
                         <i className="bx bx-chevron-right" />{" "}
-                        <a >Dịch vụ</a>
+                        <a href="tel:01423456789" >Gọi khiếu nại</a>
                       </li>
                       <li>
                         <i className="bx bx-chevron-right" />{" "}
-                        <a >Terms of service</a>
+                        <a href="tel:0123456789" >Gọi bảo hành</a>
                       </li>
                       <li>
                         <i className="bx bx-chevron-right" />{" "}
-                        <a >Privacy policy</a>
+                        <a href="https://www.facebook.com/bii.nhok.1" >Bảo trợ truyền thông</a>
                       </li>
                     </ul>
                   </div>

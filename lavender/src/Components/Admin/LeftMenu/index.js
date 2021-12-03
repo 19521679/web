@@ -19,6 +19,10 @@ const table = [
     to: "/admin/product",
   },
   {
+    name: "Chi tiết sản phẩm",
+    to: "/admin/productdetail",
+  },
+  {
     name: "Nhân viên",
     to: "/admin/staff",
   },
@@ -37,10 +41,6 @@ const table = [
   {
     name: "Tài khoản khách hàng",
     to: "/admin/customeraccount",
-  },
-  {
-    name: "Loại sản phẩm",
-    to: "/admin/producttype",
   },
   {
     name: "Bảo hành",

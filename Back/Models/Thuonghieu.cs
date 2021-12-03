@@ -16,6 +16,7 @@ namespace Back.Models
         public int Mathuonghieu { get; set; }
         public string Tenthuonghieu { get; set; }
         public string Xuatxu { get; set; }
+        public string Image { get; set; }
 
         [JsonIgnore]
         public virtual ICollection<Sanpham> Sanphams { get; set; }

@@ -17,3 +17,32 @@
     flex-direction: column;   
     overflow: scroll;
 }
+
+.timkiemthuonghieu-modal .add-khachhang-button{
+    position: absolute!important;
+    right: 19px;
+    top: -7px;
+}
+.timkiemthuonghieu-modal .danhsachsanpham-title{
+    z-index: 3
+}
+.timkiemthuonghieu-modal .add-item-modal{
+    z-index: 2;
+
+}
+.timkiemthuonghieu-modal .form-main-add-edit{
+    padding: 24px 0px;
+    height: 565px;
+    display: flex;
+    flex-direction: column;   
+    overflow: scroll;
+}
+.timkiemthuonghieu-modal .form-control  .add-to-build {
+    border: 0;
+    margin: 5px;
+    color: white;
+    border-radius: 4px;
+    position: relative;
+    left: 200px;
+    bottom: 5px;
+}

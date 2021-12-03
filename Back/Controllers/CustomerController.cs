@@ -194,8 +194,13 @@ namespace Back.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeleteStaff(int makhachhang)
         {
-            var khachhang = await lavenderContext.Khachhang.SingleAsync(x => x.Makhachhang == makhachhang);
-            lavenderContext.Remove(khachhang);
+            var s = await lavenderContext.Khachhang.SingleAsync(x => x.Makhachhang == makhachhang);
+            lavenderContext.Remove(s);
+            string path = _env.ContentRootPath + "/wwwroot/khachhang/" + s.Makhachhang + ".Jpeg";
+            if (System.IO.File.Exists(path))
+            {
+                System.IO.File.Delete(path);
+            }
             await lavenderContext.SaveChangesAsync();
             return StatusCode(200, Json(makhachhang));
         }

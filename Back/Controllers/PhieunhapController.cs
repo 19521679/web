@@ -5,7 +5,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Back.Models.Account;
 using Back.Models;
 using Newtonsoft.Json;
 using Microsoft.EntityFrameworkCore;

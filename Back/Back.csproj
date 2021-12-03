@@ -37,12 +37,16 @@
     <None Remove="Newtonsoft.Json" />
     <None Remove="Json.Net" />
     <None Remove="Common\" />
-    <None Remove="Models\Cart\" />
     <None Remove="System.Drawing.Common" />
     <None Remove="Microsoft.AspNetCore.Http.Abstractions" />
+    <None Remove="Models\ModelDTO\" />
+    <None Remove="Models\ModelDTO\Cart\" />
+    <None Remove="Models\ModelDTO\Account\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />
-    <Folder Include="Models\Cart\" />
+    <Folder Include="Models\ModelDTO\" />
+    <Folder Include="Models\ModelDTO\Cart\" />
+    <Folder Include="Models\ModelDTO\Account\" />
   </ItemGroup>
 </Project>

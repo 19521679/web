@@ -2,7 +2,7 @@ using System;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Collections.Specialized;
-using Back.Models.Account;
+using Back.ModelDTO;
 
 namespace Back.Controllers
 {

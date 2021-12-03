@@ -12,7 +12,6 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Back.Common;
 using Back.Models;
-using Back.Models.Account;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;

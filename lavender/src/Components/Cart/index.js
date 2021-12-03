@@ -11,6 +11,7 @@ import * as billingApi from "../apis/billing";
 import AddVoucherModal from "./AddVoucherModal";
 import DeleteAllModal from "./DeleteAllModal";
 import * as myToast from "../../Common/helper/toastHelper";
+import LoadingContainer from "../../Common/helper/loading/LoadingContainer";
 
 class index extends Component {
   state = {
@@ -22,11 +23,17 @@ class index extends Component {
     tongcong: 0,
     checkall: false,
     showModal: false,
+    loading: true,
   };
 
-   muaHang() {
+  muaHang() {
+    if (this.state.tongcong === 0) {
+      myToast.toastError("Chọn sản phẩm");
+      return;
+    }
     var danhsachsanpham = [];
-    var makhuyenmai = this.state.khuyenmai===undefined?0:this.state.khuyenmai.makhuyenmai;
+    var makhuyenmai =
+      this.state.khuyenmai === undefined ? 0 : this.state.khuyenmai.makhuyenmai;
     var tempcarts = this.state.detailCarts;
     for (var i = 0; i < tempcarts.length; i++) {
       if (tempcarts[i].chon) {
@@ -38,7 +45,7 @@ class index extends Component {
         });
       }
     }
-     billingApi
+    billingApi
       .muaHang(
         this.props.customer.makhachhang,
         makhuyenmai,
@@ -46,17 +53,23 @@ class index extends Component {
         danhsachsanpham
       )
       .then((success) => {
-        if (success.status === 200&&success.data.value.tinhtrang==="thanhcong") 
-        {myToast.toastSucces("Mua hàng thành công");
-        return;
-      }
-      if (success.status === 200&&success.data.value.tinhtrang==="hethang")
-        { myToast.toastError("Hết hàng");
-        return;
-    }
+        if (
+          success.status === 200 &&
+          success.data.value.tinhtrang === "thanhcong"
+        ) {
+          myToast.toastSucces("Mua hàng thành công");
+          return;
+        }
+        if (
+          success.status === 200 &&
+          success.data.value.tinhtrang === "hethang"
+        ) {
+          myToast.toastError("Hết hàng");
+          return;
+        }
       })
       .catch((error) => {
-         myToast.toastError("Mua hàng thất bại");
+        myToast.toastError("Mua hàng thất bại");
         console.log(error);
       });
   }
@@ -101,6 +114,7 @@ class index extends Component {
   }
 
   async loadCart() {
+    this.setState({ loading: true });
     let cart = undefined;
     if (this.props.customer.makhachhang === undefined) {
       this.props.history.push("/login");
@@ -147,7 +161,7 @@ class index extends Component {
           detailCarts[i].mausac
         )
         .then((success) => {
-          tien = success.data.value;
+          if (success.status === 200) tien = success.data.value;
         })
         .catch((error) => {
           console.error(error);
@@ -156,7 +170,7 @@ class index extends Component {
       carttemp.push(temp);
     }
 
-    await this.setState({ cart: cart, detailCarts: carttemp });
+    await this.setState({ cart: cart, detailCarts: carttemp, loading: false });
   }
 
   async changeQuantity(masanpham, dungluong, mausac, quantity) {
@@ -246,6 +260,7 @@ class index extends Component {
   render() {
     return (
       <section>
+        <LoadingContainer loading={this.state.loading}></LoadingContainer>
         <DeleteAllModal
           showModal={this.state.showModal}
           closeModal={this.closeModal.bind(this)}
@@ -312,12 +327,6 @@ class index extends Component {
                     <div className="styles__StyledShippingAddress-sc-1sjj51k-0 juqUnC box-shadow">
                       <p className="heading">
                         <span className="text">Giao tới</span>
-                        <span
-                          data-view-id="cart_shipping_location.change"
-                          className="link"
-                        >
-                          Thay đổi
-                        </span>
                       </p>
                       <p className="title">
                         <b className="name">
@@ -411,8 +420,7 @@ class index extends Component {
                             <div className="prices__value prices__value--empty">
                               {this.state.tongcong === 0
                                 ? "Vui lòng chọn sản phẩm"
-                                : this.state.tongcong +
-                                  "đ"}
+                                : this.state.tongcong + "đ"}
                             </div>
                             <span className="prices__value--noted">
                               (Đã bao gồm VAT nếu có)

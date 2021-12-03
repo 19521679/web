@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {} from "react";
 import "reactjs-popup/dist/index.css";
 import Modal from "react-modal";
 import * as myToast from "../../../Common/helper/toastHelper";
@@ -15,20 +15,15 @@ const customStyles = {
   },
 };
 
-export default class DeleteModal extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  submitHandler() {
+export default function DeleteModal(props) {
+  function submitHandler() {
     customerApi
-      .deleteCustomer(this.props.customer.makhachhang)
+      .deleteCustomer(props.customer.makhachhang)
       .then((success) => {
         if (success.status) {
           myToast.toastSucces("Xoá khách hàng thành công");
-          this.props.delete(this.props.customer);
-          this.props.closeModal();
+          props.deleteFunction(props.customer);
+          props.closeModal();
         }
       })
       .catch((error) => {
@@ -37,42 +32,40 @@ export default class DeleteModal extends Component {
       });
   }
 
-  render() {
-    return (
-      <Modal
-        isOpen={this.props.showModal}
-        onRequestClose={this.props.closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
-        <div class="add-item-modal khachhangmodal" role="document">
-          <div class="">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">
-                Bạn có muốn xoá khách hàng này
-              </h5>
-            </div>
-
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-dismiss="modal"  
-                onClick={this.props.closeModal}
-              >
-                Đóng
-              </button>
-              <button
-                type="button"
-                class="btn btn-primary"
-                onClick={this.submitHandler.bind(this)}
-              >
-                Xoá
-              </button>
-            </div>
-          </div>
+  return (
+    <Modal
+    isOpen={props.showModal}
+    onRequestClose={props.closeModal}
+    style={customStyles}
+    contentLabel="Example Modal"
+  >
+    <div class="add-item-modal khachhangmodal" role="document">
+      <div class="">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">
+            Bạn có muốn xoá khách hàng này
+          </h5>
         </div>
-      </Modal>
-    );
-  }
+
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-dismiss="modal"  
+            onClick={props.closeModal}
+          >
+            Đóng
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            onClick={submitHandler.bind(this)}
+          >
+            Xoá
+          </button>
+        </div>
+      </div>
+    </div>
+  </Modal>
+  )
 }

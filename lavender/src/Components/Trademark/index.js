@@ -7,13 +7,16 @@ function importAll(r) {
   return r.keys().map(r);
 }
 
-const images = importAll(
-  require.context("../../Asset/trademark", false, /\.(png|jpe?g|svg)$/)
-);
+const images = (type)=>{
+  if (type==="mobile")  return importAll(require.context("../../Asset/trademark/mobile", false, /\.(png|jpe?g|svg)$/));
+  if (type==="laptop")  return importAll(require.context("../../Asset/trademark/laptop", false, /\.(png|jpe?g|svg)$/));
+  return importAll(require.context("../../Asset/trademark/mobile", false, /\.(png|jpe?g|svg)$/));
+}
+  
 
-const myImage = (name) => {
+const myImage = (name, type) => {
   let img = null;
-  images.map((data) => {
+  images(type).map((data) => {
     if (data.default.includes(name)) img = data.default;
     return data.default;
   });
@@ -61,7 +64,7 @@ export default class index extends Component {
           <img
             className="trademark-icon loaded"
             // data-ll-status="loaded"
-            src={myImage(value)}
+            src={myImage(value, this.props.type)}
             alt=""
           ></img>
         </Link>

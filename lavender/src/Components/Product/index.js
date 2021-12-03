@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./style.css";
 import SlideShow from "../SlideShow";
-import * as mobileApi from "../apis/mobile";
+import * as laptopApi from "../apis/laptop";
 import * as detailProductApi from "../apis/detailProduct";
 import * as imageApi from "../apis/image";
 import { bindActionCreators } from "redux";
@@ -12,6 +12,7 @@ import * as favoriteApi from "../apis/favorite";
 import * as myToast from "../../Common/helper/toastHelper";
 // import { indexOf } from "lodash";
 import { withRouter } from "react-router-dom";
+import LoadingContainer from "../../Common/helper/loading/LoadingContainer";
 
 function Mota(props) {
   return <h1>Mô tả</h1>;
@@ -36,6 +37,7 @@ class index extends Component {
     mausac: [],
     chondungluong: "-1",
     chonmausac: "-1",
+    loading: true,
   };
   renderTab(n) {
     switch (n) {
@@ -168,7 +170,7 @@ class index extends Component {
     await favoriteApi
       .checklike(this.props.customer.makhachhang, this.state.product.masanpham)
       .then((success) => {
-        if (success.status === 200) {
+        if (success.status === 200 && success.data.value.liked) {
           this.setState({ liked: true });
         }
       })
@@ -187,13 +189,13 @@ class index extends Component {
     this.loadMausac();
 
     var query = `/${loai}/${hang}/${dong}/${sanpham}`;
-    await mobileApi
-      .mobileInfo(query)
+    await laptopApi
+      .laptopInfo(query)
       .then((success) => {
         if (success.status === 200) {
           this.setState({
             product: success.data.value,
-            sohinhanh: success.data.serializerSettings.sohinhanh - 1,
+            sohinhanh: success.data.serializerSettings.sohinhanh,
           });
         }
       })
@@ -202,15 +204,16 @@ class index extends Component {
       });
     await this.xemGia();
     await this.checked();
+    this.setState({ loading: false });
   }
   addToCart = () => {
     let { product } = this.state;
     let { cartActionCreators } = this.props;
-    if (this.state.chondungluong==="-1") {
+    if (this.state.chondungluong === "-1") {
       myToast.toastError("Bạn cần chọn dung lượng");
       return;
     }
-    if (this.state.chonmausac==="-1") {
+    if (this.state.chonmausac === "-1") {
       myToast.toastError("Bạn cần chọn màu sắc");
       return;
     }
@@ -227,6 +230,7 @@ class index extends Component {
   render() {
     return (
       <section>
+        <LoadingContainer loading={this.state.loading}></LoadingContainer>
         <div className="container">
           <div className="detail-product__box-name">
             <div className="cps-container">

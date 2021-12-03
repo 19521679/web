@@ -1,8 +1,7 @@
 import Home from "../../Components/Home.js";
 import NotFoundPage from "./NotFoundPage.js";
 import Mobile from "../../Components/Mobile";
-import Computer from "../../Components/Computer";
-import ExDevice from "../../Components/ExDevice";
+import Laptop from "../../Components/Laptop";
 import Blog from "../../Components/Blog";
 import Cart from "../../Components/Cart";
 import Login from "../../Components/Accounts/Login.js";
@@ -16,38 +15,15 @@ import BillingDashboard from "../../Components/Admin/BillingDashboard";
 import StaffDashboard from "../../Components/Admin/StaffDashboard";
 import StaffAccountDashboard from "../../Components/Admin/StaffAccountDashboard";
 import SuplierDashboard from "../../Components/Admin/SuplierDashboard";
+import ProductDetailDashboard from "../../Components/Admin/ProductDetailDashboard";
 import PromotionDashboard from "../../Components/Admin/PromotionDashboard";
 import CustomerAccountDashboard from "../../Components/Admin/CustomerAccountDashboard"
-import ProductTypeDashboard from "../../Components/Admin/ProductTypeDashboard"
 import GuaranteeDashboard from "../../Components/Admin/GuaranteeDashboard"
 import TrademarkDashboard from "../../Components/Admin/TrademarkDashboard"
 
 import LMember from "../../Components/Accounts/LMember.js";
-<<<<<<< HEAD
-=======
-import ThongTinTaiKhoan from "../../Components/Accounts/ThongTinTaiKhoan";
-import ThongBaoCuaToi from "../../Components/Accounts/ThongBaoCuaToi";
-import QuanLyDonHang from "../../Components/Accounts/QuanLyDonHang";
-import SoDiaChi from "../../Components/Accounts/SoDiaChi";
-import SanPhamYeuThich from "../../Components/Accounts/SanPhamYeuThich";
-import Article from "../../Components/Article";
-import ArticleDetail from "../../Components/Article/ArticleDetail";
-<<<<<<< HEAD
->>>>>>> 8f346fa0b10fc74f6eda05d64d0100bd50617210
-=======
->>>>>>> 8f346fa0b10fc74f6eda05d64d0100bd50617210
 
 const routes = [
-  {
-    path: "/article",
-    exact: true,
-    main: () => <Article></Article>,
-  },
-  {
-    path: "/article/:mabaiviet",
-    exact: false,
-    main: ({match}) => <ArticleDetail match={match}></ArticleDetail>,
-  },
   {
     path: "/",
     exact: true,
@@ -64,27 +40,25 @@ const routes = [
     main: ({match}) => <Mobile match={match} ></Mobile>,
   },
   {
+    path: "/laptop/:trademark",
+    exact: false,
+    main: ({match}) => <Laptop match={match} ></Laptop>,
+  },
+  {
     path: "/mobile",
     exact: false,
     main: () => <Mobile ></Mobile>,
   },
-
   {
-    path: "/computer",
+    path: "/laptop",
     exact: false,
-    main: () => <Computer></Computer>,
-  },
-  {
-    path: "/exdevice",
-    exact: false,
-    main: () => <ExDevice></ExDevice>,
+    main: () => <Laptop ></Laptop>,
   },
   {
     path: "/blog",
     exact: false,
     main: () => <Blog></Blog>,
   },
-  
   {
     path: "/cart",
     exact: false,
@@ -141,6 +115,11 @@ const routes = [
     main: () => <SuplierDashboard></SuplierDashboard>
   },
   {
+    path: "/admin/productdetail",
+    exact: true,
+    main: () => <ProductDetailDashboard></ProductDetailDashboard>
+  },
+  {
     path: "/admin/staffaccount",
     exact: true,
     main: () => <StaffAccountDashboard></StaffAccountDashboard>
@@ -154,11 +133,6 @@ const routes = [
     path: "/admin/customeraccount",
     exact: true,
     main: () => <CustomerAccountDashboard></CustomerAccountDashboard>
-  },
-  {
-    path: "/admin/producttype",
-    exact: true,
-    main: () => <ProductTypeDashboard></ProductTypeDashboard>
   },
   {
     path: "/admin/guarantee",

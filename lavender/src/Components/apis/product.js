@@ -37,3 +37,10 @@ export const allLaptopProduct=()=>{
 export const deleteProduct=(masanpham)=>{
     return axiosServices.get(`${API_ENDPOINT}/xoa-sanpham?masanpham=${masanpham}`);
 };
+
+export const findProduct=(timkiem)=>{
+    return axiosServices.get(`${API_ENDPOINT}/tim-sanpham?timkiem=${timkiem}`);
+}
+export const tenNewProduct=()=>{
+    return axiosServices.get(`${API_ENDPOINT}/muoi-sanpham-moinhat`)
+}

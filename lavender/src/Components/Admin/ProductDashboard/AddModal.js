@@ -4,6 +4,7 @@ import Modal from "react-modal";
 import * as productApi from "../../apis/product";
 import * as myToast from "../../../Common/helper/toastHelper";
 import "./style.css";
+import FindTrademarkModal from "./FindTrademarkModal";
 
 const customStyles = {
   content: {
@@ -29,6 +30,7 @@ export default class AddModal extends Component {
       thoidiemramat: new Date(),
       dongia: undefined,
       progress: 0,
+      showModal:false
     };
   }
   submitHandler = () => {
@@ -65,6 +67,12 @@ export default class AddModal extends Component {
     }
     this.setState({ progress: percent });
   }
+  
+  
+  chooseFunction(trademark){
+    this.setState({mathuonghieu: trademark.mathuonghieu})
+  }
+
 
   render() {
     return (
@@ -74,6 +82,11 @@ export default class AddModal extends Component {
         style={customStyles}
         contentLabel="Example Modal"
       >
+           <FindTrademarkModal
+        showModal={this.state.showModal}
+        closeModal={() => this.setState({showModal: false})}
+        chooseFunction={this.chooseFunction.bind(this)}
+      ></FindTrademarkModal>
         <div class="add-item-modal" role="document">
           <div class="">
             <div class="modal-header">
@@ -144,6 +157,11 @@ export default class AddModal extends Component {
                     }}
                     value={this.state.mathuonghieu}
                   ></input>
+                   <div className="mr-1" onClick={(() => this.setState({showModal: true}))}>
+                  <div onClick={(() => this.setState({showModal:true}))}>
+                  <i class="bi bi-arrow-right-circle "></i>
+                  </div>
+                </div>
                 </div>
               </div>
 

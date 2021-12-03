@@ -4,40 +4,31 @@ import * as imageApi from "../apis/image.js";
 import { Link } from "react-router-dom";
 import * as detailProductapi from "../apis/detailProduct";
 
+
 export default class ProductItem extends Component {
   state = { giamoi: 0 };
-  componentDidMount() {
-    detailProductapi
+  async componentDidMount() {
+    await detailProductapi
       .xemgiamoitheomasanpham(this.props.product.masanpham)
       .then((success) => {
-        this.setState({ giamoi: success.data.value });
+        if (success.status === 200) this.setState({ giamoi: success.data.value });
+
       })
       .catch((error) => {
         console.error(error);
       });
   }
-  // state = { resposeImage: {} };
-  // componentDidMount() {
-  //   var { product } = this.props;
-  //   imageApi
-  //     .image(product.image)
-  //     .then((success) => {
-  //       this.setState({ resposeImage: window.URL.createObjectURL(new Blob([success.data])) });
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }
   render() {
     return (
       <div
-        className="col-lg-3 col-md-4 d-flex align-items-stretch col-lg-2 product-item"
+        className="col-lg-3 col-md-4 d-flex align-items-stretch col-lg-2 product-item "
         data-aos="zoom-in"
         data-aos-delay={100}
       >
+    
         <div className="icon-box iconbox-blue">
           {function () {
-            if (this.state.giamoi !== this.props.product.dongia)
+            if (this.state.giamoi < this.props.product.dongia)
               return (
                 <div className="box-item-sticker-percent">
                   <p>
@@ -61,9 +52,9 @@ export default class ProductItem extends Component {
               <i className="bx bxl-dribbble" />
             </div>
             <h4>
-              <a href={() => false} className="product-name">
+              <div className="product-name">
                 {this.props.product.tensanpham}
-              </a>
+              </div>
             </h4>
           </Link>
 
@@ -71,11 +62,12 @@ export default class ProductItem extends Component {
             {function () {
               var result = [];
               if (this.state.giamoi !== this.props.product.dongia) {
+                
                 result.push(
                   <p className="old-price">{this.props.product.dongia}₫</p>
                 );
               }
-              result.push(<a href={() => false}>{this.state.giamoi} ₫</a>);
+              result.push(<a href={() => false}>{this.state.giamoi===0?"Hết hàng":this.state.giamoi+"₫"} </a>);
               return result;
             }.bind(this)()}
           </div>

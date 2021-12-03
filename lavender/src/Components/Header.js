@@ -19,14 +19,8 @@ const menus = [
     exact: true, 
   },
   {
-    name: "Máy tính",
-    to: "/computer",
-    exact: false,
-    list: [],
-  },
-  {
-    name: "Phụ kiện",
-    to: "/exdevice",
+    name: "Laptop",
+    to: "/laptop",
     exact: false,
     list: [],
   },
@@ -42,12 +36,6 @@ const menus = [
     exact: false,
     list: [],
   },
-  {
-    name: "Bài viết",
-    to: "/article",
-    exact: false,
-    list: [],
-  },  
 ];
 
 var MenuLink = ({ lable, to, activeOnlyWhenExact }) => {
